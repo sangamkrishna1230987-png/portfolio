@@ -5,3 +5,5 @@
 # local tooling
 .vercel
 node_modules
+# original upload, the site uses the encoded assets/videos/bawree.mp4
+assets/videos/Bawree_1.mp4
