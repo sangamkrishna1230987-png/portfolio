@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sangam Gowtham — AI Filmmaker</title>
+  <meta name="description" content="Sangam Gowtham — AI filmmaker directing cinematic AI films and AI ad campaigns." />
+  <meta property="og:title" content="Sangam Gowtham — AI Filmmaker" />
+  <meta property="og:description" content="Cinematic AI films and AI ads, directed frame by frame." />
+  <meta property="og:image" content="assets/gowtham-wide.jpg" />
+  <link rel="preload" href="fonts/VCR_OSD_MONO.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="fonts/CanvaSans-Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@500;700&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- Gooey filter used by every .btn (liquid fill on hover) -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" data-nav>
+    <a class="nav__logo" href="#top" aria-label="Home">SANGAM<span>.</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#reel">Reel</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#clients">Clients</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--light btn--sm" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Contact</a>
+    </div>
+    <button class="nav__burger" data-burger aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" data-menu aria-hidden="true">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#reel">Reel</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#clients">Clients</a>
+      <a href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Contact</a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ 1. HERO — 3D image tunnel ============ -->
+    <section class="hero-wrap" data-hero>
+      <div class="hero">
+        <div class="hero__persp" data-persp>
+          <div class="tunnel" data-tunnel>
+            <div class="wall wall--top" data-wall="top"></div>
+            <div class="wall wall--bottom" data-wall="bottom"></div>
+            <div class="wall wall--left" data-wall="left"></div>
+            <div class="wall wall--right" data-wall="right"></div>
+          </div>
+        </div>
+        <div class="hero__fog"></div>
+        <div class="hero__shade" data-shade></div>
+
+        <div class="hero__content" data-hero-content>
+          <p class="eyebrow hero__eyebrow">Sangam Gowtham · AI Filmmaker</p>
+          <h1 class="hero__title">
+            <span class="line"><span>AI films with</span></span>
+            <span class="line"><span>a director's eye</span></span>
+          </h1>
+          <p class="hero__sub">Cinematic AI films and AI ads — written, directed and finished frame by frame.</p>
+          <div class="hero__btns">
+            <a class="btn btn--light" href="#work">View my work</a>
+            <a class="btn btn--ghost" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="scroll-hint" data-scroll-hint><span></span>Scroll</div>
+      </div>
+    </section>
+
+    <!-- ============ 2. ABOUT — top-down desk, assembles on scroll ============ -->
+    <section class="about" id="about" data-about>
+      <div class="desk" data-desk>
+
+        <!-- drawer with pull tab -> showreel -->
+        <a class="obj obj--drawer" href="#reel" data-from="0,-60,0" aria-label="Pull to watch the showreel">
+          <div class="drawer"><span class="drawer__label">SHOWREEL</span><span class="drawer__handle"></span></div>
+          <span class="pull">PULL<i>↓</i></span>
+        </a>
+
+        <!-- caution sign -->
+        <div class="obj obj--caution" data-from="-60,10,-30" aria-hidden="true">
+          <svg viewBox="0 0 360 600">
+            <defs>
+              <linearGradient id="cy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd83a"/><stop offset="1" stop-color="#f2b705"/></linearGradient>
+            </defs>
+            <path d="M40 60 Q40 20 80 20 H280 Q320 20 320 60 L350 560 Q352 590 322 590 H38 Q8 590 10 560 Z" fill="url(#cy)"/>
+            <rect x="140" y="40" width="80" height="26" rx="13" fill="#0000" stroke="#b58700" stroke-width="6"/>
+            <path d="M40 60 Q40 20 80 20 H280 Q320 20 320 60 L322 92 H38 Z" fill="#000" fill-opacity=".05"/>
+            <g transform="translate(180 170)">
+              <path d="M0 -52 L58 46 H-58 Z" fill="none" stroke="#111" stroke-width="10" stroke-linejoin="round"/>
+              <rect x="-5" y="-22" width="10" height="38" rx="4" fill="#111"/><circle cy="30" r="6" fill="#111"/>
+            </g>
+            <rect x="30" y="260" width="300" height="70" fill="#111"/>
+            <text x="180" y="314" text-anchor="middle" font-family="Canva Sans, Arial, sans-serif" font-weight="700" font-size="58" fill="#ffd83a" letter-spacing="2">CAUTION</text>
+            <text x="180" y="410" text-anchor="middle" font-family="Canva Sans, Arial, sans-serif" font-weight="700" font-size="74" fill="#111">AI AT</text>
+            <text x="180" y="486" text-anchor="middle" font-family="Canva Sans, Arial, sans-serif" font-weight="700" font-size="74" fill="#111">WORK</text>
+            <rect x="40" y="530" width="90" height="46" rx="10" fill="#e0a800"/><rect x="230" y="530" width="90" height="46" rx="10" fill="#e0a800"/>
+          </svg>
+        </div>
+
+        <!-- photo -->
+        <figure class="obj obj--photo" data-from="-20,-70,25">
+          <div class="photo"><img src="assets/gowtham-portrait.jpg" alt="Sangam Gowtham" /></div>
+        </figure>
+
+        <!-- iced coffee -->
+        <div class="obj obj--coffee" data-from="-40,40,90" aria-hidden="true">
+          <svg viewBox="0 0 220 220">
+            <defs>
+              <radialGradient id="latte" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#e2b387"/><stop offset=".6" stop-color="#c38456"/><stop offset="1" stop-color="#8e5530"/></radialGradient>
+            </defs>
+            <circle cx="110" cy="110" r="104" fill="#f7f3ee" stroke="#d9d2c8" stroke-width="3"/>
+            <circle cx="110" cy="110" r="90" fill="url(#latte)"/>
+            <g fill="#fff" fill-opacity=".5" stroke="#fff" stroke-opacity=".8" stroke-width="2">
+              <rect x="62" y="60" width="40" height="36" rx="8" transform="rotate(-14 82 78)"/>
+              <rect x="112" y="72" width="38" height="36" rx="8" transform="rotate(18 131 90)"/>
+              <rect x="80" y="112" width="40" height="38" rx="8" transform="rotate(8 100 131)"/>
+              <rect x="126" y="122" width="34" height="32" rx="8" transform="rotate(-22 143 138)"/>
+            </g>
+            <path d="M40 80 A80 80 0 0 1 90 32" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- retro computer -->
+        <div class="obj obj--mac" data-from="0,40,0" data-robot>
+          <svg viewBox="0 0 380 500" aria-hidden="true">
+            <defs>
+              <linearGradient id="mb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3efe6"/><stop offset="1" stop-color="#dcd5c5"/></linearGradient>
+              <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eceee9"/><stop offset="1" stop-color="#c3c6bf"/></linearGradient>
+            </defs>
+            <rect x="10" y="0" width="360" height="420" rx="18" fill="url(#mb)"/>
+            <rect x="40" y="36" width="300" height="250" rx="12" fill="#d6cfbe"/>
+            <rect x="60" y="56" width="260" height="200" rx="22" fill="#2e2e2e"/>
+            <rect x="70" y="66" width="240" height="180" rx="18" fill="url(#scr)"/>
+            <g fill="#1d1d1d" class="mac__face" data-face>
+              <g class="mac__expr is-on" data-expr="happy"><g class="mac__eye"><rect x="136" y="115" width="8" height="8"/><rect x="145" y="115" width="8" height="8"/><rect x="136" y="124" width="8" height="8"/><rect x="145" y="124" width="8" height="8"/><rect x="136" y="133" width="8" height="8"/><rect x="145" y="133" width="8" height="8"/></g><g class="mac__eye"><rect x="226" y="115" width="8" height="8"/><rect x="235" y="115" width="8" height="8"/><rect x="226" y="124" width="8" height="8"/><rect x="235" y="124" width="8" height="8"/><rect x="226" y="133" width="8" height="8"/><rect x="235" y="133" width="8" height="8"/></g><rect x="118" y="178" width="8" height="8"/><rect x="253" y="178" width="8" height="8"/><rect x="127" y="187" width="8" height="8"/><rect x="244" y="187" width="8" height="8"/><rect x="136" y="196" width="8" height="8"/><rect x="145" y="196" width="8" height="8"/><rect x="154" y="196" width="8" height="8"/><rect x="163" y="196" width="8" height="8"/><rect x="172" y="196" width="8" height="8"/><rect x="181" y="196" width="8" height="8"/><rect x="190" y="196" width="8" height="8"/><rect x="199" y="196" width="8" height="8"/><rect x="208" y="196" width="8" height="8"/><rect x="217" y="196" width="8" height="8"/><rect x="226" y="196" width="8" height="8"/><rect x="235" y="196" width="8" height="8"/></g>
+              <g class="mac__expr" data-expr="wink"><rect x="235" y="115" width="8" height="8"/><rect x="244" y="115" width="8" height="8"/><rect x="127" y="124" width="8" height="8"/><rect x="136" y="124" width="8" height="8"/><rect x="145" y="124" width="8" height="8"/><rect x="154" y="124" width="8" height="8"/><rect x="235" y="124" width="8" height="8"/><rect x="244" y="124" width="8" height="8"/><rect x="235" y="133" width="8" height="8"/><rect x="244" y="133" width="8" height="8"/><rect x="244" y="178" width="8" height="8"/><rect x="127" y="187" width="8" height="8"/><rect x="244" y="187" width="8" height="8"/><rect x="136" y="196" width="8" height="8"/><rect x="145" y="196" width="8" height="8"/><rect x="154" y="196" width="8" height="8"/><rect x="163" y="196" width="8" height="8"/><rect x="172" y="196" width="8" height="8"/><rect x="181" y="196" width="8" height="8"/><rect x="190" y="196" width="8" height="8"/><rect x="199" y="196" width="8" height="8"/><rect x="208" y="196" width="8" height="8"/><rect x="217" y="196" width="8" height="8"/><rect x="226" y="196" width="8" height="8"/><rect x="235" y="196" width="8" height="8"/></g>
+              <g class="mac__expr" data-expr="surprised"><rect x="127" y="88" width="8" height="8"/><rect x="136" y="88" width="8" height="8"/><rect x="145" y="88" width="8" height="8"/><rect x="226" y="88" width="8" height="8"/><rect x="235" y="88" width="8" height="8"/><rect x="244" y="88" width="8" height="8"/><rect x="127" y="106" width="8" height="8"/><rect x="136" y="106" width="8" height="8"/><rect x="145" y="106" width="8" height="8"/><rect x="226" y="106" width="8" height="8"/><rect x="235" y="106" width="8" height="8"/><rect x="244" y="106" width="8" height="8"/><rect x="127" y="115" width="8" height="8"/><rect x="136" y="115" width="8" height="8"/><rect x="145" y="115" width="8" height="8"/><rect x="226" y="115" width="8" height="8"/><rect x="235" y="115" width="8" height="8"/><rect x="244" y="115" width="8" height="8"/><rect x="127" y="124" width="8" height="8"/><rect x="136" y="124" width="8" height="8"/><rect x="145" y="124" width="8" height="8"/><rect x="226" y="124" width="8" height="8"/><rect x="235" y="124" width="8" height="8"/><rect x="244" y="124" width="8" height="8"/><rect x="172" y="169" width="8" height="8"/><rect x="181" y="169" width="8" height="8"/><rect x="190" y="169" width="8" height="8"/><rect x="199" y="169" width="8" height="8"/><rect x="163" y="178" width="8" height="8"/><rect x="208" y="178" width="8" height="8"/><rect x="163" y="187" width="8" height="8"/><rect x="208" y="187" width="8" height="8"/><rect x="163" y="196" width="8" height="8"/><rect x="208" y="196" width="8" height="8"/><rect x="172" y="205" width="8" height="8"/><rect x="181" y="205" width="8" height="8"/><rect x="190" y="205" width="8" height="8"/><rect x="199" y="205" width="8" height="8"/></g>
+              <g class="mac__expr" data-expr="love"><rect x="127" y="106" width="8" height="8" fill="#e3342f"/><rect x="145" y="106" width="8" height="8" fill="#e3342f"/><rect x="226" y="106" width="8" height="8" fill="#e3342f"/><rect x="244" y="106" width="8" height="8" fill="#e3342f"/><rect x="118" y="115" width="8" height="8" fill="#e3342f"/><rect x="127" y="115" width="8" height="8" fill="#e3342f"/><rect x="136" y="115" width="8" height="8" fill="#e3342f"/><rect x="145" y="115" width="8" height="8" fill="#e3342f"/><rect x="154" y="115" width="8" height="8" fill="#e3342f"/><rect x="217" y="115" width="8" height="8" fill="#e3342f"/><rect x="226" y="115" width="8" height="8" fill="#e3342f"/><rect x="235" y="115" width="8" height="8" fill="#e3342f"/><rect x="244" y="115" width="8" height="8" fill="#e3342f"/><rect x="253" y="115" width="8" height="8" fill="#e3342f"/><rect x="127" y="124" width="8" height="8" fill="#e3342f"/><rect x="136" y="124" width="8" height="8" fill="#e3342f"/><rect x="145" y="124" width="8" height="8" fill="#e3342f"/><rect x="226" y="124" width="8" height="8" fill="#e3342f"/><rect x="235" y="124" width="8" height="8" fill="#e3342f"/><rect x="244" y="124" width="8" height="8" fill="#e3342f"/><rect x="136" y="133" width="8" height="8" fill="#e3342f"/><rect x="235" y="133" width="8" height="8" fill="#e3342f"/><rect x="118" y="178" width="8" height="8"/><rect x="253" y="178" width="8" height="8"/><rect x="127" y="187" width="8" height="8"/><rect x="244" y="187" width="8" height="8"/><rect x="136" y="196" width="8" height="8"/><rect x="145" y="196" width="8" height="8"/><rect x="154" y="196" width="8" height="8"/><rect x="163" y="196" width="8" height="8"/><rect x="172" y="196" width="8" height="8"/><rect x="181" y="196" width="8" height="8"/><rect x="190" y="196" width="8" height="8"/><rect x="199" y="196" width="8" height="8"/><rect x="208" y="196" width="8" height="8"/><rect x="217" y="196" width="8" height="8"/><rect x="226" y="196" width="8" height="8"/><rect x="235" y="196" width="8" height="8"/></g>
+              <g class="mac__expr" data-expr="sleepy"><rect x="127" y="124" width="8" height="8"/><rect x="136" y="124" width="8" height="8"/><rect x="145" y="124" width="8" height="8"/><rect x="154" y="124" width="8" height="8"/><rect x="226" y="124" width="8" height="8"/><rect x="235" y="124" width="8" height="8"/><rect x="244" y="124" width="8" height="8"/><rect x="253" y="124" width="8" height="8"/><rect x="172" y="187" width="8" height="8"/><rect x="181" y="187" width="8" height="8"/><rect x="190" y="187" width="8" height="8"/><rect x="199" y="187" width="8" height="8"/><g class="mac__zzz"><rect x="253" y="79" width="8" height="8" fill="#e3342f"/><rect x="262" y="79" width="8" height="8" fill="#e3342f"/><rect x="271" y="79" width="8" height="8" fill="#e3342f"/><rect x="262" y="88" width="8" height="8" fill="#e3342f"/><rect x="253" y="97" width="8" height="8" fill="#e3342f"/><rect x="262" y="97" width="8" height="8" fill="#e3342f"/><rect x="271" y="97" width="8" height="8" fill="#e3342f"/></g></g>
+              <g class="mac__expr" data-expr="angry"><rect x="118" y="97" width="8" height="8"/><rect x="127" y="97" width="8" height="8"/><rect x="262" y="97" width="8" height="8"/><rect x="271" y="97" width="8" height="8"/><rect x="136" y="106" width="8" height="8"/><rect x="145" y="106" width="8" height="8"/><rect x="244" y="106" width="8" height="8"/><rect x="253" y="106" width="8" height="8"/><rect x="136" y="115" width="8" height="8"/><rect x="145" y="115" width="8" height="8"/><rect x="226" y="115" width="8" height="8"/><rect x="235" y="115" width="8" height="8"/><rect x="136" y="124" width="8" height="8"/><rect x="145" y="124" width="8" height="8"/><rect x="226" y="124" width="8" height="8"/><rect x="235" y="124" width="8" height="8"/><rect x="136" y="178" width="8" height="8"/><rect x="145" y="178" width="8" height="8"/><rect x="154" y="178" width="8" height="8"/><rect x="163" y="178" width="8" height="8"/><rect x="172" y="178" width="8" height="8"/><rect x="181" y="178" width="8" height="8"/><rect x="190" y="178" width="8" height="8"/><rect x="199" y="178" width="8" height="8"/><rect x="208" y="178" width="8" height="8"/><rect x="217" y="178" width="8" height="8"/><rect x="226" y="178" width="8" height="8"/><rect x="235" y="178" width="8" height="8"/><rect x="127" y="187" width="8" height="8"/><rect x="244" y="187" width="8" height="8"/><rect x="118" y="196" width="8" height="8"/><rect x="253" y="196" width="8" height="8"/><g class="mac__anger"><rect x="82" y="70" width="8" height="8" fill="#e3342f"/><rect x="100" y="70" width="8" height="8" fill="#e3342f"/><rect x="73" y="79" width="8" height="8" fill="#e3342f"/><rect x="82" y="79" width="8" height="8" fill="#e3342f"/><rect x="100" y="79" width="8" height="8" fill="#e3342f"/><rect x="109" y="79" width="8" height="8" fill="#e3342f"/><rect x="73" y="97" width="8" height="8" fill="#e3342f"/><rect x="82" y="97" width="8" height="8" fill="#e3342f"/><rect x="100" y="97" width="8" height="8" fill="#e3342f"/><rect x="109" y="97" width="8" height="8" fill="#e3342f"/><rect x="82" y="106" width="8" height="8" fill="#e3342f"/><rect x="100" y="106" width="8" height="8" fill="#e3342f"/></g></g>
+            </g>
+            <rect x="200" y="330" width="130" height="10" rx="4" fill="#3a3a3a"/><rect x="290" y="326" width="36" height="18" rx="3" fill="#cfc7b5" stroke="#b9b09c"/>
+            <g transform="translate(58 334)"><rect width="18" height="4" fill="#61bb46"/><rect y="4" width="18" height="4" fill="#fdb827"/><rect y="8" width="18" height="4" fill="#f5821f"/><rect y="12" width="18" height="4" fill="#e03a3e"/><rect y="16" width="18" height="4" fill="#963d97"/><rect y="20" width="18" height="4" fill="#009ddc"/></g>
+            <rect x="10" y="420" width="360" height="70" rx="12" fill="#d8d0bf"/>
+            <rect x="300" y="440" width="40" height="30" rx="4" fill="#cbc2af"/>
+          </svg>
+          <span class="tape">SANGAM · FILMS</span>
+        </div>
+
+        <!-- name tag -->
+        <div class="obj obj--tag" data-from="60,-30,-20">
+          <div class="nametag"><b>Hello</b><small>my name is</small><span>Sangam</span></div>
+        </div>
+
+        <!-- headline + bio -->
+        <div class="obj obj--intro" data-from="40,20,0">
+          <h2 class="about__title">an AI filmmaker turning scripts into films &amp; ads that feel <em>real</em></h2>
+          <p class="about__bio">Hi, I'm Sangam — a Hyderabad-based AI filmmaker. For 3+ years I've been directing short films, commercials and reels with Midjourney, Seedance, Kling and Runway, then finishing them in Premiere Pro and After Effects. Story first, tools second.</p>
+        </div>
+
+        <!-- notepad checklist -->
+        <div class="obj obj--note" data-from="50,60,20">
+          <div class="note">
+            <ul>
+              <li class="done">Storyteller</li>
+              <li class="done">AI obsessed</li>
+              <li class="done">50+ films shipped</li>
+              <li>Your next film</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- clapperboard -->
+        <div class="obj obj--clap" data-from="0,80,-10">
+          <svg viewBox="0 0 460 330" aria-hidden="true">
+            <g class="clap__stick">
+              <rect x="10" y="8" width="440" height="56" rx="6" fill="#161616"/>
+              <g fill="#f4f4f4"><path d="M40 8h40l-30 56h-40z"/><path d="M120 8h40l-30 56h-40z"/><path d="M200 8h40l-30 56h-40z"/><path d="M280 8h40l-30 56h-40z"/><path d="M360 8h40l-30 56h-40z"/></g>
+            </g>
+            <rect x="10" y="70" width="440" height="252" rx="8" fill="#1b1b1b"/>
+            <g stroke="#f4f4f4" stroke-opacity=".85" stroke-width="2"><path d="M10 140H450M10 210H450M10 270H450M230 140V270"/></g>
+            <g font-family="Caveat, cursive" fill="#f4f4f4">
+              <text x="26" y="96" font-size="18" opacity=".7">PRODUCTION</text><text x="26" y="128" font-size="32" font-weight="700">Sangam Gowtham Films</text>
+              <text x="26" y="162" font-size="18" opacity=".7">SCENE</text><text x="120" y="196" font-size="40" font-weight="700">01</text>
+              <text x="246" y="162" font-size="18" opacity=".7">TAKE</text><text x="330" y="196" font-size="40" font-weight="700">01</text>
+              <text x="26" y="232" font-size="18" opacity=".7">DIRECTOR</text><text x="26" y="262" font-size="28" font-weight="700">Sangam</text>
+              <text x="246" y="232" font-size="18" opacity=".7">CAMERA</text><text x="246" y="262" font-size="28" font-weight="700">AI</text>
+              <text x="26" y="306" font-size="22" opacity=".8">ROLL A · 24 FPS · 2.39:1</text>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ 3. SHOWREEL carousel ============ -->
+    <section class="reel" id="reel" data-reel>
+      <div class="slider slider--reel" data-slider data-bullets>
+        <button class="edge-arrow edge-arrow--left" data-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="slider__track" data-track>
+          <article class="reel__slide">
+            <img src="assets/gowtham-wide.jpg" alt="Portrait of Sangam Gowtham against a yellow backdrop" style="object-position: 60% 30%" />
+            <div class="reel__meta">
+              <span class="tag">Hello, I'm Sangam</span>
+              <h3>I direct films and ads made with AI</h3>
+            </div>
+            <a class="pill-btn" href="#work">See my work&nbsp; →</a>
+          </article>
+          <article class="reel__slide">
+            <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/meena-film.jpg" src="assets/videos/preview/meena-film.mp4"></video>
+            <div class="reel__meta"><span class="tag">Latest · Jewellery Film</span><h3>Meena Jewellers — a cinematic story</h3></div>
+            <button class="pill-btn" type="button" data-play="meena-film">▶&nbsp; Watch</button>
+          </article>
+          <article class="reel__slide">
+            <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/rakshabandhan.jpg" src="assets/videos/preview/rakshabandhan.mp4"></video>
+            <div class="reel__meta"><span class="tag">Latest · Story Ad</span><h3>Raksha Bandhan — a festival of bonds</h3></div>
+            <button class="pill-btn" type="button" data-play="rakshabandhan">▶&nbsp; Watch</button>
+          </article>
+          <article class="reel__slide">
+            <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/dairy-milk.jpg" src="assets/videos/preview/dairy-milk.mp4"></video>
+            <div class="reel__meta"><span class="tag">Latest · TV Commercial</span><h3>Dairy Milk — festive sweetness</h3></div>
+            <button class="pill-btn" type="button" data-play="dairy-milk">▶&nbsp; Watch</button>
+          </article>
+          <article class="reel__slide">
+            <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/chicken-popcorn-reel.jpg" src="assets/videos/preview/chicken-popcorn-reel.mp4"></video>
+            <div class="reel__meta"><span class="tag">Latest · Food Ad</span><h3>Chicken Popcorn — one bite, big smile</h3></div>
+            <button class="pill-btn" type="button" data-play="chicken-popcorn-reel">▶&nbsp; Watch</button>
+          </article>
+        </div>
+        <button class="edge-arrow edge-arrow--right" data-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="bullets" data-bullet-wrap></div>
+      </div>
+    </section>
+
+    <!-- ============ 3. FEATURES / SERVICES ============ -->
+    <div id="services">
+      <section class="feature">
+        <div class="feature__text">
+          <span class="eyebrow" style="--c: var(--green)">01 — AI Films</span>
+          <h2 data-split>Cinematic films without a film crew</h2>
+          <p data-reveal>Short films and brand films made end to end with AI — story, characters, multi-scene continuity and real camera language, from first frame to final grade.</p>
+          <div class="feature__btns" data-reveal>
+            <a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+            <a class="btn btn--ghost" href="#reel">Watch reel</a>
+          </div>
+        </div>
+        <div class="feature__media feature__media--tall" data-media data-play="latest-03" role="button" tabindex="0" aria-label="Play video">
+          <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/latest-03.jpg" src="assets/videos/preview/latest-03.mp4"></video>
+        </div>
+      </section>
+
+      <section class="feature feature--flip">
+        <div class="feature__text">
+          <span class="eyebrow" style="--c: var(--blue)">02 — AI Ads</span>
+          <h2 data-split>Ads that stop the scroll</h2>
+          <p data-reveal>Product spots, launch films and social-first ad creatives — cinematic quality at the speed and volume campaigns actually need.</p>
+          <div class="feature__btns" data-reveal>
+            <a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+            <a class="btn btn--ghost" href="#work">See ads</a>
+          </div>
+        </div>
+        <div class="feature__media" data-media data-play="chicken-popcorn-reel" role="button" tabindex="0" aria-label="Play video">
+          <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/chicken-popcorn-reel.jpg" src="assets/videos/preview/chicken-popcorn-reel.mp4"></video>
+        </div>
+      </section>
+
+      <section class="feature">
+        <div class="feature__text">
+          <span class="eyebrow" style="--c: var(--hotpink)">03 — Characters</span>
+          <h2 data-split>Characters that stay in character</h2>
+          <p data-reveal>Reusable character reference sheets, pose locking and a style-locking method that keeps faces, wardrobe, light and lens consistent across long-form animation.</p>
+          <div class="feature__btns" data-reveal>
+            <a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+            <a class="btn btn--ghost" href="#process">My process</a>
+          </div>
+        </div>
+        <div class="feature__media feature__media--tall" data-media data-play="svarn-reel" role="button" tabindex="0" aria-label="Play video">
+          <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/svarn-reel.jpg" src="assets/videos/preview/svarn-reel.mp4"></video>
+        </div>
+      </section>
+
+      <section class="feature feature--flip">
+        <div class="feature__text">
+          <span class="eyebrow" style="--c: var(--yellow)">04 — Post-Production</span>
+          <h2 data-split>Finished like real cinema</h2>
+          <p data-reveal>Edit, colour, sound design and upscaling in Premiere Pro and After Effects — so every AI shot lands with a consistent mood and a polished finish.</p>
+          <div class="feature__btns" data-reveal>
+            <a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+            <a class="btn btn--ghost" href="#reel">Watch reel</a>
+          </div>
+        </div>
+        <div class="feature__media" data-media data-play="dairy-milk" role="button" tabindex="0" aria-label="Play video">
+          <video data-autoplay muted loop playsinline preload="none" poster="assets/posters/dairy-milk.jpg" src="assets/videos/preview/dairy-milk.mp4"></video>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ 4. GALLERY rows (filled from js/main.js) ============ -->
+    <section class="gallery" id="work">
+      <div class="section-head">
+        <h2 class="h-xl" data-split>Selected work</h2>
+        <p class="section-head__lead" data-reveal>Reels, UGC, jewellery films, TV commercials and story ads. Hover to preview, click to watch with sound.</p>
+      </div>
+      <div class="gallery__rows" data-gallery></div>
+      <div class="center" data-reveal>
+        <a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Discuss a project</a>
+      </div>
+    </section>
+
+    <!-- ============ 5. PROCESS — colored cards slider ============ -->
+    <section class="learn" id="process">
+      <div class="section-head">
+        <h2 class="h-xl" data-split>From brief<br />to final frame</h2>
+        <p data-reveal>Every film and ad moves through the same six steps — so the last shot looks like the first.</p>
+        <div data-reveal><a class="btn btn--light" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Book a call</a></div>
+      </div>
+      <div class="slider" data-slider>
+        <button class="edge-arrow edge-arrow--left" data-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="slider__track" data-track>
+          <a class="lcard" style="--card: #5ce882" href="#contact">
+            <div class="lcard__img"><img src="assets/process/01-script.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 01</span><h3 class="lcard__title">Script &amp;<br />concept</h3></div>
+          </a>
+          <a class="lcard" style="--card: #33d0ff" href="#contact">
+            <div class="lcard__img"><img src="assets/process/02-storyboard.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 02</span><h3 class="lcard__title">Story-<br />board</h3></div>
+          </a>
+          <a class="lcard" style="--card: #d25fff" href="#contact">
+            <div class="lcard__img"><img src="assets/process/03-character.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 03</span><h3 class="lcard__title">Character<br />sheets</h3></div>
+          </a>
+          <a class="lcard" style="--card: #ffc533" href="#contact">
+            <div class="lcard__img"><img src="assets/process/04-prompt.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 04</span><h3 class="lcard__title">Prompt<br />direction</h3></div>
+          </a>
+          <a class="lcard" style="--card: #ff5d4b" href="#contact">
+            <div class="lcard__img"><img src="assets/process/05-motion.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 05</span><h3 class="lcard__title">Image<br />to video</h3></div>
+          </a>
+          <a class="lcard" style="--card: #ff3386" href="#contact">
+            <div class="lcard__img"><img src="assets/process/06-edit.svg" loading="lazy" alt="" /></div>
+            <div class="lcard__body"><span class="lcard__sub">Step 06</span><h3 class="lcard__title">Edit &amp;<br />grade</h3></div>
+          </a>
+        </div>
+        <button class="edge-arrow edge-arrow--right" data-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ============ 6. CLIENTS — text list ============ -->
+    <section class="clients" id="clients">
+      <h2 class="h-giant" data-split>Who I've<br />worked with</h2>
+      <div class="clients__wrap is-collapsed" data-clients>
+        <ol class="clients__list">
+        <li class="client" style="--c: var(--blue)">
+          <span class="client__num">01</span>
+          <h3 class="client__name">Adidas</h3>
+          <span class="client__tag">Sportswear</span>
+          <p class="client__about">A high-energy running reel — rain-soaked streets, cinematic pace, made for Instagram.</p>
+        </li>
+        <li class="client" style="--c: var(--blue)">
+          <span class="client__num">02</span>
+          <h3 class="client__name">Pepsi</h3>
+          <span class="client__tag">Beverage</span>
+          <p class="client__about">A punchy product reel built around the ice-cold pour and the fizz.</p>
+        </li>
+        <li class="client" style="--c: var(--orange)">
+          <span class="client__num">03</span>
+          <h3 class="client__name">KFC</h3>
+          <span class="client__tag">Food</span>
+          <p class="client__about">Crave-worthy food reel — crunchy close-ups and bold, social-first pacing.</p>
+        </li>
+        <li class="client" style="--c: var(--hotpink)">
+          <span class="client__num">04</span>
+          <h3 class="client__name">H&amp;M</h3>
+          <span class="client__tag">Fashion</span>
+          <p class="client__about">A textural fashion reel — fabric, light and movement in a short vertical cut.</p>
+        </li>
+        <li class="client" style="--c: var(--purple)">
+          <span class="client__num">05</span>
+          <h3 class="client__name">Prada</h3>
+          <span class="client__tag">Luxury fashion</span>
+          <p class="client__about">A luxury lifestyle film with editorial styling and sculpted detail shots.</p>
+        </li>
+        <li class="client" style="--c: var(--purple)">
+          <span class="client__num">06</span>
+          <h3 class="client__name">Cadbury Dairy Milk</h3>
+          <span class="client__tag">Confectionery</span>
+          <p class="client__about">A festive TV commercial full of warmth, family and sweetness.</p>
+        </li>
+        <li class="client" style="--c: var(--green)">
+          <span class="client__num">07</span>
+          <h3 class="client__name">Dabur</h3>
+          <span class="client__tag">FMCG</span>
+          <p class="client__about">A family-moment TV commercial made entirely with AI.</p>
+        </li>
+        <li class="client" style="--c: var(--yellow)">
+          <span class="client__num">08</span>
+          <h3 class="client__name">Amul</h3>
+          <span class="client__tag">Dairy</span>
+          <p class="client__about">A lifestyle ad built around the everyday ritual of fresh milk.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--yellow)">
+          <span class="client__num">09</span>
+          <h3 class="client__name">Maggi</h3>
+          <span class="client__tag">Food</span>
+          <p class="client__about">A mouth-watering noodle reel with macro food shots.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--orange)">
+          <span class="client__num">10</span>
+          <h3 class="client__name">Pringles</h3>
+          <span class="client__tag">Snacks</span>
+          <p class="client__about">A playful snack reel with stacked-crisp close-ups.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--blue)">
+          <span class="client__num">11</span>
+          <h3 class="client__name">Emaar</h3>
+          <span class="client__tag">Real estate · Dubai</span>
+          <p class="client__about">Property films with walkthroughs, aerial reveals and amenity scenes.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--green)">
+          <span class="client__num">12</span>
+          <h3 class="client__name">Kirloskar</h3>
+          <span class="client__tag">Story ad</span>
+          <p class="client__about">A life-story ad that follows a farmer's journey.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--hotpink)">
+          <span class="client__num">13</span>
+          <h3 class="client__name">Ritu Kumar</h3>
+          <span class="client__tag">Fashion</span>
+          <p class="client__about">A craft-led fashion film centred on embroidery and heritage.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--green)">
+          <span class="client__num">14</span>
+          <h3 class="client__name">Pilgrim</h3>
+          <span class="client__tag">Skincare</span>
+          <p class="client__about">A clean product reel for a serum launch.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--orange)">
+          <span class="client__num">15</span>
+          <h3 class="client__name">Super You</h3>
+          <span class="client__tag">Nutrition</span>
+          <p class="client__about">A lifestyle ad with a bold, celebrity-style hero.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--hotpink)">
+          <span class="client__num">16</span>
+          <h3 class="client__name">Bawree</h3>
+          <span class="client__tag">Fashion · Dubai</span>
+          <p class="client__about">Fashion campaign film for a Dubai-based label.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--yellow)">
+          <span class="client__num">17</span>
+          <h3 class="client__name">Svarn</h3>
+          <span class="client__tag">Jewellery</span>
+          <p class="client__about">Cinematic AI jewellery films and festive reels — from everyday gold to an Independence Day special.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--orange)">
+          <span class="client__num">18</span>
+          <h3 class="client__name">Meena Jewellers</h3>
+          <span class="client__tag">Jewellery</span>
+          <p class="client__about">A widescreen, story-led brand film made entirely with AI — character, continuity and scope.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--green)">
+          <span class="client__num">19</span>
+          <h3 class="client__name">Hatti Butti</h3>
+          <span class="client__tag">Local brand</span>
+          <p class="client__about">A heritage commercial built around the traditional oil mill, from sunrise to the final pour.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--blue)">
+          <span class="client__num">20</span>
+          <h3 class="client__name">Fonfox</h3>
+          <span class="client__tag">Product</span>
+          <p class="client__about">A product commercial that shows the machine, the process and the finish in one clean story.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--hotpink)">
+          <span class="client__num">21</span>
+          <h3 class="client__name">Olympic</h3>
+          <span class="client__tag">Brand</span>
+          <p class="client__about">Stadium-scale AI scenes and big-moment energy for a sports-themed brand commercial.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--purple)">
+          <span class="client__num">22</span>
+          <h3 class="client__name">Toss</h3>
+          <span class="client__tag">Hospitality</span>
+          <p class="client__about">A venue commercial that brings the crowd, the screens and the match-night buzz to life.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--green)">
+          <span class="client__num">23</span>
+          <h3 class="client__name">Upnourish</h3>
+          <span class="client__tag">Nutrition</span>
+          <p class="client__about">UGC-style ads with relatable, consistent AI creators made for reels and shorts.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--yellow)">
+          <span class="client__num">24</span>
+          <h3 class="client__name">Ace</h3>
+          <span class="client__tag">Nutrition</span>
+          <p class="client__about">Social-first reels and captioned cuts for a plant-protein launch.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--blue)">
+          <span class="client__num">25</span>
+          <h3 class="client__name">Naam</h3>
+          <span class="client__tag">Lifestyle</span>
+          <p class="client__about">A striking lifestyle film opening on an extreme close-up.</p>
+        </li>
+        <li class="client client--more" style="--c: var(--green)">
+          <span class="client__num">26</span>
+          <h3 class="client__name">Bio Tech</h3>
+          <span class="client__tag">Local business</span>
+          <p class="client__about">A local business commercial with close-up product storytelling.</p>
+        </li>
+        </ol>
+        <div class="clients__more">
+          <button class="btn btn--ghost" type="button" data-clients-toggle data-more="See more clients (+18)" data-less="Show fewer">See more clients (+18)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6b. TESTIMONIALS — chat + mail screenshots ============ -->
+    <!-- SAMPLE COPY: replace every message below with real client messages before publishing -->
+    <section class="voices" id="voices">
+      <div class="section-head">
+        <h2 class="h-xl" data-split>Straight from<br />the inbox</h2>
+        <p data-reveal>Messages from clients after the final cut landed.</p>
+      </div>
+      <div class="voices__board" data-voices>
+        <figure class="shot shot--wa shot--a" style="--r: -5deg">
+          <div class="wa">
+            <div class="wa__status"><span>9:41</span><span class="wa__icons"><i></i><i></i><i></i></span></div>
+            <div class="wa__head">
+              <svg class="wa__back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+              <span class="wa__avatar" style="--av: #c9a227">J</span>
+              <div class="wa__who"><strong>Marketing Head</strong><small>Jewellery brand · online</small></div>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            </div>
+            <div class="wa__chat">
+              <span class="wa__day">Today</span>
+<div class="wa__msg wa__msg--in"><p>Sangam the festive film is 🔥</p><span class="wa__time">10:02</span></div>
+<div class="wa__msg wa__msg--in"><p>The whole team watched it on loop. The close-ups look better than our actual shoot 😅</p><span class="wa__time">10:03</span></div>
+<div class="wa__msg wa__msg--out"><p>Haha thank you! So glad it landed 🙏</p><span class="wa__time">10:05<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+<div class="wa__msg wa__msg--in"><p>Let's lock the next one with you. Sending the brief tonight.</p><span class="wa__time">10:06</span></div>
+            </div>
+            <div class="wa__input"><span>Message</span><i class="wa__mic"></i></div>
+          </div>
+        </figure>
+        <figure class="shot shot--mail shot--b" style="--r: 4deg">
+          <div class="mail">
+            <div class="mail__bar"><i></i><i></i><i></i><span class="mail__search">Search mail</span></div>
+            <div class="mail__body">
+              <h4 class="mail__subject">Re: Final cut — brand film <span class="mail__label">Inbox</span></h4>
+              <div class="mail__from">
+                <span class="mail__avatar" style="--av: #6e60ee">F</span>
+                <div><strong>Founder</strong> <small>&lt;founder@client-brand.com&gt;</small><em>to me</em></div>
+                <time>Mon, 8 Sep, 10:42</time>
+              </div>
+              <div class="mail__text"><p>Hi Sangam,</p><p>We just saw the final cut with the team — honestly, goosebumps. The story, the lighting, the way the characters stayed consistent across every scene… it feels like a real production.</p><p>Thank you for taking our rough idea and turning it into something we're proud to put out.</p><p>Warm regards,<br>Founder, Client Brand</p></div>
+              <div class="mail__actions"><span>↩ Reply</span><span>↪ Forward</span></div>
+            </div>
+          </div>
+        </figure>
+        <figure class="shot shot--wa shot--c" style="--r: 3deg">
+          <div class="wa">
+            <div class="wa__status"><span>9:41</span><span class="wa__icons"><i></i><i></i><i></i></span></div>
+            <div class="wa__head">
+              <svg class="wa__back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+              <span class="wa__avatar" style="--av: #00a884">L</span>
+              <div class="wa__who"><strong>Owner</strong><small>Local business · online</small></div>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            </div>
+            <div class="wa__chat">
+              <span class="wa__day">Today</span>
+<div class="wa__msg wa__msg--out"><p>Final video sent ✅ 4K + reel version</p><span class="wa__time">18:20<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+<div class="wa__msg wa__msg--in"><p>Just watched. Can't believe this was made with AI 😳</p><span class="wa__time">18:31</span></div>
+<div class="wa__msg wa__msg--in"><p>My customers are asking which studio shot it 😂</p><span class="wa__time">18:31</span></div>
+<div class="wa__msg wa__msg--out"><p>That's the best compliment 😄</p><span class="wa__time">18:33<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+            </div>
+            <div class="wa__input"><span>Message</span><i class="wa__mic"></i></div>
+          </div>
+        </figure>
+        <figure class="shot shot--mail shot--d" style="--r: -3deg">
+          <div class="mail">
+            <div class="mail__bar"><i></i><i></i><i></i><span class="mail__search">Search mail</span></div>
+            <div class="mail__body">
+              <h4 class="mail__subject">Loved the UGC ads! <span class="mail__label">Inbox</span></h4>
+              <div class="mail__from">
+                <span class="mail__avatar" style="--av: #ff5d4b">B</span>
+                <div><strong>Brand Manager</strong> <small>&lt;brand@client-brand.com&gt;</small><em>to me</em></div>
+                <time>Thu, 21 Aug, 16:07</time>
+              </div>
+              <div class="mail__text"><p>Hey Sangam,</p><p>Quick note to say the UGC batch is performing really well — the creators feel natural and the hooks are spot on.</p><p>Can we do another set for next month?</p><p>Cheers,<br>Brand Manager</p></div>
+              <div class="mail__actions"><span>↩ Reply</span><span>↪ Forward</span></div>
+            </div>
+          </div>
+        </figure>
+        <figure class="shot shot--wa shot--e" style="--r: -2deg">
+          <div class="wa">
+            <div class="wa__status"><span>9:41</span><span class="wa__icons"><i></i><i></i><i></i></span></div>
+            <div class="wa__head">
+              <svg class="wa__back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+              <span class="wa__avatar" style="--av: #33d0ff">A</span>
+              <div class="wa__who"><strong>Creative Director</strong><small>Agency · online</small></div>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            </div>
+            <div class="wa__chat">
+              <span class="wa__day">Today</span>
+<div class="wa__msg wa__msg--in"><p>Client approved the TV spot in the first review 🙌</p><span class="wa__time">12:14</span></div>
+<div class="wa__msg wa__msg--in"><p>First time that's ever happened for us</p><span class="wa__time">12:14</span></div>
+<div class="wa__msg wa__msg--out"><p>Let's gooo 🚀</p><span class="wa__time">12:15<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+            </div>
+            <div class="wa__input"><span>Message</span><i class="wa__mic"></i></div>
+          </div>
+        </figure>
+        <figure class="shot shot--wa shot--f" style="--r: 4deg">
+          <div class="wa">
+            <div class="wa__status"><span>9:41</span><span class="wa__icons"><i></i><i></i><i></i></span></div>
+            <div class="wa__head">
+              <svg class="wa__back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+              <span class="wa__avatar" style="--av: #d25fff">F</span>
+              <div class="wa__who"><strong>Founder</strong><small>Fashion label, Dubai · online</small></div>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            </div>
+            <div class="wa__chat">
+              <span class="wa__day">Today</span>
+<div class="wa__msg wa__msg--in"><p>The campaign film just went live 😍</p><span class="wa__time">21:04</span></div>
+<div class="wa__msg wa__msg--in"><p>People are asking where we shot it. Nobody believes it's AI</p><span class="wa__time">21:05</span></div>
+<div class="wa__msg wa__msg--out"><p>Haha that's exactly the goal ✨</p><span class="wa__time">21:07<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+<div class="wa__msg wa__msg--in"><p>Next collection drop — you're doing it. No discussion 😄</p><span class="wa__time">21:08</span></div>
+            </div>
+            <div class="wa__input"><span>Message</span><i class="wa__mic"></i></div>
+          </div>
+        </figure>
+        <figure class="shot shot--mail shot--g" style="--r: -4deg">
+          <div class="mail">
+            <div class="mail__bar"><i></i><i></i><i></i><span class="mail__search">Search mail</span></div>
+            <div class="mail__body">
+              <h4 class="mail__subject">Jewellery reels — thank you! <span class="mail__label">Inbox</span></h4>
+              <div class="mail__from">
+                <span class="mail__avatar" style="--av: #c9a227">M</span>
+                <div><strong>Marketing Team</strong> <small>&lt;marketing@client-brand.com&gt;</small><em>to me</em></div>
+                <time>Tue, 2 Sep, 09:18</time>
+              </div>
+              <div class="mail__text"><p>Hi Sangam,</p><p>Sharing some love from the whole team — the reels look premium and every piece looks exactly like the real thing. The festive one is our favourite.</p><p>Let's plan the next set together.</p><p>Best,<br>Marketing Team</p></div>
+              <div class="mail__actions"><span>↩ Reply</span><span>↪ Forward</span></div>
+            </div>
+          </div>
+        </figure>
+        <figure class="shot shot--wa shot--h" style="--r: -3deg">
+          <div class="wa">
+            <div class="wa__status"><span>9:41</span><span class="wa__icons"><i></i><i></i><i></i></span></div>
+            <div class="wa__head">
+              <svg class="wa__back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+              <span class="wa__avatar" style="--av: #ff5d4b">P</span>
+              <div class="wa__who"><strong>Producer</strong><small>Ad agency · online</small></div>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg>
+              <svg class="wa__ico" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+            </div>
+            <div class="wa__chat">
+              <span class="wa__day">Today</span>
+<div class="wa__msg wa__msg--in"><p>Bro the turnaround on this was insane 🔥</p><span class="wa__time">15:40</span></div>
+<div class="wa__msg wa__msg--in"><p>Script to final before our client call</p><span class="wa__time">15:40</span></div>
+<div class="wa__msg wa__msg--out"><p>Told you, AI + a plan 😎</p><span class="wa__time">15:42<svg class="wa__tick" viewBox="0 0 16 11"><path d="M11.07.65 5.2 7.1 2.94 4.85l-.93.95 3.23 3.2L12 1.6zM15 .65 9.12 7.1l-.63-.62-.93.94 1.6 1.6L15.93 1.6z"/></svg></span></div>
+            </div>
+            <div class="wa__input"><span>Message</span><i class="wa__mic"></i></div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 7. RESULTS — round boxes ============ -->
+    <section class="scale" id="results">
+      <div class="section-head">
+        <h2 class="h-xl h-accent" data-split><strong>Creative built for scale</strong></h2>
+        <p data-reveal>Cinematic output without the cost and timelines of a traditional shoot.</p>
+      </div>
+      <div class="rboxes">
+        <article class="rbox" data-reveal>
+          <span class="rbox__logo" data-count="50" data-suffix="+">50+</span>
+          <h3>AI films directed</h3>
+          <p>Short films, brand films and reels — character-led stories with cinematic camera work.</p>
+          <a href="#reel" class="rbox__link">Watch the reel →</a>
+        </article>
+        <article class="rbox" data-reveal style="--d: .12s">
+          <span class="rbox__logo" data-count="200" data-suffix="+">200+</span>
+          <h3>AI ads delivered</h3>
+          <p>Product spots and social-first creatives for brands across categories.</p>
+          <a href="#work" class="rbox__link">See the ads →</a>
+        </article>
+        <article class="rbox" data-reveal style="--d: .24s">
+          <span class="rbox__logo" data-count="3" data-suffix="×">3×</span>
+          <h3>Higher engagement</h3>
+          <p>AI-animated ads outperforming conventional static and stock-video creatives.</p>
+          <a href="#clients" class="rbox__link">See clients →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 8. TOOLS marquee + CTA ============ -->
+    <section class="trusted" id="contact">
+      <div class="section-head">
+        <h2 class="h-xl" data-split>Tools I direct</h2>
+        <p data-reveal>The best AI generation tools, finished in Adobe.</p>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>MIDJOURNEY</span><span>SEEDANCE 2.0</span><span>KLING</span><span>HIGGSFIELD</span><span>RUNWAY</span><span>GOOGLE VEO</span><span>SORA</span><span>NANO BANANA</span><span>COMFYUI</span><span>ELEVENLABS</span><span>SUNO</span><span>FLUX</span>
+          <span>MIDJOURNEY</span><span>SEEDANCE 2.0</span><span>KLING</span><span>HIGGSFIELD</span><span>RUNWAY</span><span>GOOGLE VEO</span><span>SORA</span><span>NANO BANANA</span><span>COMFYUI</span><span>ELEVENLABS</span><span>SUNO</span><span>FLUX</span>
+        </div>
+      </div>
+      <div class="marquee marquee--reverse" aria-hidden="true">
+        <div class="marquee__track">
+          <span>PREMIERE PRO</span><span>AFTER EFFECTS</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AUDITION</span><span>FIREFLY</span><span>PREMIERE PRO</span><span>AFTER EFFECTS</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AUDITION</span><span>FIREFLY</span>
+          <span>PREMIERE PRO</span><span>AFTER EFFECTS</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AUDITION</span><span>FIREFLY</span><span>PREMIERE PRO</span><span>AFTER EFFECTS</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AUDITION</span><span>FIREFLY</span>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2 class="h-giant" data-split>Let's create</h2>
+        <div class="cta__btns" data-reveal>
+          <a class="btn btn--light btn--lg" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+          <a class="btn btn--ghost btn--lg" href="#reel">Watch reel</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__label">Say hello</p>
+        <a class="footer__mail" href="mailto:sangamkrishna1230987@gmail.com">sangamkrishna1230987@gmail.com</a>
+        <a class="footer__wa" href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp · +91 82478 96356</a>
+        <p class="footer__note">AI films &amp; AI ads · Hyderabad, India</p>
+      </div>
+      <div>
+        <p class="footer__label">Explore</p>
+        <a href="#reel">Reel</a><a href="#services">Services</a><a href="#work">Work</a><a href="#clients">Clients</a>
+      </div>
+      <div>
+        <p class="footer__label">Connect</p>
+        <a href="https://linkedin.com/in/sangamgowtham" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/918247896356?text=Hi%20Sangam%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:sangamkrishna1230987@gmail.com">Email</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer__word" aria-hidden="true">SANGAM</div>
+    <div class="footer__bottom">
+      <span>© <span data-year></span> Sangam Gowtham</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ============ MASCOT — "Pixel" peeks in on scroll, slips, says hello ============ -->
+  <div class="bot" data-bot aria-hidden="true">
+    <svg class="bot__peel" viewBox="-2 -2 86 54" aria-hidden="true"><rect x="35" y="3" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="3" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="3" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="3" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="32" y="0" width="8" height="8" fill="#ffd23f"/><rect x="32" y="0" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="0" width="8" height="8" fill="#ffd23f"/><rect x="40" y="0" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="8" width="8" height="8" fill="#ffd23f"/><rect x="24" y="8" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="32" y="8" width="8" height="8" fill="#ffd23f"/><rect x="32" y="8" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="8" width="8" height="8" fill="#ffd23f"/><rect x="40" y="8" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="8" width="8" height="8" fill="#ffd23f"/><rect x="48" y="8" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="16" y="16" width="8" height="8" fill="#ffd23f"/><rect x="16" y="16" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="16" width="8" height="8" fill="#ffd23f"/><rect x="24" y="16" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="32" y="16" width="8" height="8" fill="#111318"/><rect x="40" y="16" width="8" height="8" fill="#111318"/><rect x="48" y="16" width="8" height="8" fill="#ffd23f"/><rect x="48" y="16" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="16" width="8" height="8" fill="#ffd23f"/><rect x="56" y="16" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="8" y="24" width="8" height="8" fill="#ffd23f"/><rect x="8" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="16" y="24" width="8" height="8" fill="#ffd23f"/><rect x="16" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="24" width="8" height="8" fill="#111318"/><rect x="48" y="24" width="8" height="8" fill="#111318"/><rect x="56" y="24" width="8" height="8" fill="#ffd23f"/><rect x="56" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="24" width="8" height="8" fill="#ffd23f"/><rect x="64" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="0" y="32" width="8" height="8" fill="#ffd23f"/><rect x="0" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="8" y="32" width="8" height="8" fill="#ffd23f"/><rect x="8" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="16" y="32" width="8" height="8" fill="#111318"/><rect x="56" y="32" width="8" height="8" fill="#111318"/><rect x="64" y="32" width="8" height="8" fill="#ffd23f"/><rect x="64" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="32" width="8" height="8" fill="#ffd23f"/><rect x="72" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="0" y="40" width="8" height="8" fill="#111318"/><rect x="8" y="40" width="8" height="8" fill="#111318"/><rect x="64" y="40" width="8" height="8" fill="#111318"/><rect x="72" y="40" width="8" height="8" fill="#111318"/></svg>
+    <div class="bot__char" data-bot-char title="Hi, I'm Pixel!">
+      <div class="bot__burst" data-bot-burst>
+        <svg viewBox="0 0 200 120"><path d="M100 4 L118 34 L152 12 L146 46 L192 44 L158 66 L186 96 L144 88 L140 116 L112 92 L92 118 L82 88 L40 108 L52 78 L8 72 L46 54 L16 24 L60 34 L70 6 L86 30 Z" fill="#ffd23f" stroke="#111" stroke-width="5" stroke-linejoin="round"/><text x="100" y="72" text-anchor="middle" font-family="Bangers, Impact, sans-serif" font-size="34" fill="#e3342f" stroke="#111" stroke-width="1.5" letter-spacing="1" data-bot-burst-text>WHOOPS!</text></svg>
+      </div>
+      <div class="bot__sweat" data-bot-sweat></div>
+      <div class="bot__notes" data-bot-notes><i>♪</i><i>♫</i><i>♪</i></div>
+      <div class="bot__stars" data-bot-stars><i>★</i><i>✦</i><i>★</i></div>
+      <div class="bot__bubble" data-bot-bubble><span data-bot-say>HELLO!</span></div>
+      <svg class="bot__svg" viewBox="-4 -4 140 172" aria-hidden="true">
+      <g class="bot__leg bot__leg--l"><rect x="35" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="32" y="136" width="8" height="8" fill="#111318"/><rect x="40" y="136" width="8" height="8" fill="#b9c2d3"/><rect x="40" y="136" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="136" width="8" height="8" fill="#111318"/><rect x="32" y="144" width="8" height="8" fill="#111318"/><rect x="40" y="144" width="8" height="8" fill="#111318"/><rect x="48" y="144" width="8" height="8" fill="#111318"/><rect x="56" y="144" width="8" height="8" fill="#111318"/></g>
+      <g class="bot__leg bot__leg--r"><rect x="75" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="139" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="147" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="72" y="136" width="8" height="8" fill="#111318"/><rect x="80" y="136" width="8" height="8" fill="#b9c2d3"/><rect x="80" y="136" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="136" width="8" height="8" fill="#111318"/><rect x="72" y="144" width="8" height="8" fill="#111318"/><rect x="80" y="144" width="8" height="8" fill="#111318"/><rect x="88" y="144" width="8" height="8" fill="#111318"/><rect x="96" y="144" width="8" height="8" fill="#111318"/></g>
+      <g class="bot__arm bot__arm--l"><rect x="11" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="8" y="96" width="8" height="8" fill="#111318"/><rect x="16" y="96" width="8" height="8" fill="#111318"/><rect x="8" y="104" width="8" height="8" fill="#111318"/><rect x="16" y="104" width="8" height="8" fill="#5ce882"/><rect x="16" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="8" y="112" width="8" height="8" fill="#111318"/><rect x="16" y="112" width="8" height="8" fill="#111318"/></g>
+      <g class="bot__body"><rect x="35" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="91" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="123" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="131" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="32" y="88" width="8" height="8" fill="#111318"/><rect x="40" y="88" width="8" height="8" fill="#111318"/><rect x="48" y="88" width="8" height="8" fill="#111318"/><rect x="56" y="88" width="8" height="8" fill="#111318"/><rect x="64" y="88" width="8" height="8" fill="#111318"/><rect x="72" y="88" width="8" height="8" fill="#111318"/><rect x="80" y="88" width="8" height="8" fill="#111318"/><rect x="88" y="88" width="8" height="8" fill="#111318"/><rect x="24" y="96" width="8" height="8" fill="#111318"/><rect x="32" y="96" width="8" height="8" fill="#5ce882"/><rect x="32" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="96" width="8" height="8" fill="#5ce882"/><rect x="40" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="96" width="8" height="8" fill="#5ce882"/><rect x="48" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="96" width="8" height="8" fill="#5ce882"/><rect x="56" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="96" width="8" height="8" fill="#5ce882"/><rect x="64" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="96" width="8" height="8" fill="#5ce882"/><rect x="72" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="96" width="8" height="8" fill="#5ce882"/><rect x="80" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="96" width="8" height="8" fill="#5ce882"/><rect x="88" y="96" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="96" y="96" width="8" height="8" fill="#111318"/><rect x="24" y="104" width="8" height="8" fill="#111318"/><rect x="32" y="104" width="8" height="8" fill="#5ce882"/><rect x="32" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="40" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="48" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="56" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="64" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="72" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="104" width="8" height="8" fill="#f4f6fb"/><rect x="80" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="104" width="8" height="8" fill="#5ce882"/><rect x="88" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="96" y="104" width="8" height="8" fill="#111318"/><rect x="24" y="112" width="8" height="8" fill="#111318"/><rect x="32" y="112" width="8" height="8" fill="#5ce882"/><rect x="32" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="112" width="8" height="8" fill="#f4f6fb"/><rect x="40" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="112" width="8" height="8" fill="#ffd23f"/><rect x="48" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="112" width="8" height="8" fill="#ffd23f"/><rect x="56" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="112" width="8" height="8" fill="#111318"/><rect x="72" y="112" width="8" height="8" fill="#f4f6fb"/><rect x="72" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="112" width="8" height="8" fill="#f4f6fb"/><rect x="80" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="112" width="8" height="8" fill="#5ce882"/><rect x="88" y="112" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="96" y="112" width="8" height="8" fill="#111318"/><rect x="24" y="120" width="8" height="8" fill="#111318"/><rect x="32" y="120" width="8" height="8" fill="#2fb45e"/><rect x="40" y="120" width="8" height="8" fill="#5ce882"/><rect x="40" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="120" width="8" height="8" fill="#5ce882"/><rect x="48" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="120" width="8" height="8" fill="#5ce882"/><rect x="56" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="120" width="8" height="8" fill="#5ce882"/><rect x="64" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="120" width="8" height="8" fill="#5ce882"/><rect x="72" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="120" width="8" height="8" fill="#5ce882"/><rect x="80" y="120" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="120" width="8" height="8" fill="#2fb45e"/><rect x="96" y="120" width="8" height="8" fill="#111318"/><rect x="32" y="128" width="8" height="8" fill="#111318"/><rect x="40" y="128" width="8" height="8" fill="#111318"/><rect x="48" y="128" width="8" height="8" fill="#111318"/><rect x="56" y="128" width="8" height="8" fill="#111318"/><rect x="64" y="128" width="8" height="8" fill="#111318"/><rect x="72" y="128" width="8" height="8" fill="#111318"/><rect x="80" y="128" width="8" height="8" fill="#111318"/><rect x="88" y="128" width="8" height="8" fill="#111318"/></g>
+      <g class="bot__arm bot__arm--r"><rect x="107" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="99" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="107" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="115" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="104" y="96" width="8" height="8" fill="#111318"/><rect x="112" y="96" width="8" height="8" fill="#111318"/><rect x="104" y="104" width="8" height="8" fill="#111318"/><rect x="112" y="104" width="8" height="8" fill="#5ce882"/><rect x="112" y="104" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="104" y="112" width="8" height="8" fill="#111318"/><rect x="112" y="112" width="8" height="8" fill="#111318"/></g>
+      <g class="bot__head"><rect x="59" y="3" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="3" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="11" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="19" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="27" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="35" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="43" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="51" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="59" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="67" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="11" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="115" y="75" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="19" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="27" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="35" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="43" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="51" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="59" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="67" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="75" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="83" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="91" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="99" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="107" y="83" width="8" height="8" fill="#000" fill-opacity=".35"/><rect x="56" y="0" width="8" height="8" fill="#ff4d4d"/><rect x="64" y="0" width="8" height="8" fill="#ff4d4d"/><rect x="56" y="8" width="8" height="8" fill="#111318"/><rect x="64" y="8" width="8" height="8" fill="#111318"/><rect x="16" y="16" width="8" height="8" fill="#111318"/><rect x="24" y="16" width="8" height="8" fill="#111318"/><rect x="32" y="16" width="8" height="8" fill="#111318"/><rect x="40" y="16" width="8" height="8" fill="#111318"/><rect x="48" y="16" width="8" height="8" fill="#111318"/><rect x="56" y="16" width="8" height="8" fill="#111318"/><rect x="64" y="16" width="8" height="8" fill="#111318"/><rect x="72" y="16" width="8" height="8" fill="#111318"/><rect x="80" y="16" width="8" height="8" fill="#111318"/><rect x="88" y="16" width="8" height="8" fill="#111318"/><rect x="96" y="16" width="8" height="8" fill="#111318"/><rect x="104" y="16" width="8" height="8" fill="#111318"/><rect x="8" y="24" width="8" height="8" fill="#111318"/><rect x="16" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="24" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="32" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="32" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="40" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="48" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="56" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="64" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="72" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="80" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="88" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="96" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="96" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="104" y="24" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="24" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="24" width="8" height="8" fill="#111318"/><rect x="8" y="32" width="8" height="8" fill="#111318"/><rect x="16" y="32" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="32" width="8" height="8" fill="#111318"/><rect x="32" y="32" width="8" height="8" fill="#111318"/><rect x="40" y="32" width="8" height="8" fill="#111318"/><rect x="48" y="32" width="8" height="8" fill="#111318"/><rect x="56" y="32" width="8" height="8" fill="#111318"/><rect x="64" y="32" width="8" height="8" fill="#111318"/><rect x="72" y="32" width="8" height="8" fill="#111318"/><rect x="80" y="32" width="8" height="8" fill="#111318"/><rect x="88" y="32" width="8" height="8" fill="#111318"/><rect x="96" y="32" width="8" height="8" fill="#111318"/><rect x="104" y="32" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="32" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="32" width="8" height="8" fill="#111318"/><rect x="8" y="40" width="8" height="8" fill="#111318"/><rect x="16" y="40" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="40" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="40" width="8" height="8" fill="#111318"/><rect x="32" y="40" width="8" height="8" fill="#1b2230"/><rect x="40" y="40" width="8" height="8" fill="#1b2230"/><rect x="48" y="40" width="8" height="8" fill="#1b2230"/><rect x="56" y="40" width="8" height="8" fill="#1b2230"/><rect x="64" y="40" width="8" height="8" fill="#1b2230"/><rect x="72" y="40" width="8" height="8" fill="#1b2230"/><rect x="80" y="40" width="8" height="8" fill="#1b2230"/><rect x="88" y="40" width="8" height="8" fill="#1b2230"/><rect x="96" y="40" width="8" height="8" fill="#111318"/><rect x="104" y="40" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="40" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="40" width="8" height="8" fill="#111318"/><rect x="8" y="48" width="8" height="8" fill="#111318"/><rect x="16" y="48" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="48" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="48" width="8" height="8" fill="#111318"/><rect x="32" y="48" width="8" height="8" fill="#1b2230"/><rect x="40" y="48" width="8" height="8" fill="#1b2230"/><rect x="48" y="48" width="8" height="8" fill="#1b2230"/><rect x="56" y="48" width="8" height="8" fill="#1b2230"/><rect x="64" y="48" width="8" height="8" fill="#1b2230"/><rect x="72" y="48" width="8" height="8" fill="#1b2230"/><rect x="80" y="48" width="8" height="8" fill="#1b2230"/><rect x="88" y="48" width="8" height="8" fill="#1b2230"/><rect x="96" y="48" width="8" height="8" fill="#111318"/><rect x="104" y="48" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="48" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="48" width="8" height="8" fill="#111318"/><rect x="8" y="56" width="8" height="8" fill="#111318"/><rect x="16" y="56" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="56" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="56" width="8" height="8" fill="#111318"/><rect x="32" y="56" width="8" height="8" fill="#1b2230"/><rect x="40" y="56" width="8" height="8" fill="#1b2230"/><rect x="48" y="56" width="8" height="8" fill="#1b2230"/><rect x="56" y="56" width="8" height="8" fill="#1b2230"/><rect x="64" y="56" width="8" height="8" fill="#1b2230"/><rect x="72" y="56" width="8" height="8" fill="#1b2230"/><rect x="80" y="56" width="8" height="8" fill="#1b2230"/><rect x="88" y="56" width="8" height="8" fill="#1b2230"/><rect x="96" y="56" width="8" height="8" fill="#111318"/><rect x="104" y="56" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="56" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="56" width="8" height="8" fill="#111318"/><rect x="8" y="64" width="8" height="8" fill="#111318"/><rect x="16" y="64" width="8" height="8" fill="#f4f6fb"/><rect x="16" y="64" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="64" width="8" height="8" fill="#111318"/><rect x="32" y="64" width="8" height="8" fill="#111318"/><rect x="40" y="64" width="8" height="8" fill="#111318"/><rect x="48" y="64" width="8" height="8" fill="#111318"/><rect x="56" y="64" width="8" height="8" fill="#111318"/><rect x="64" y="64" width="8" height="8" fill="#111318"/><rect x="72" y="64" width="8" height="8" fill="#111318"/><rect x="80" y="64" width="8" height="8" fill="#111318"/><rect x="88" y="64" width="8" height="8" fill="#111318"/><rect x="96" y="64" width="8" height="8" fill="#111318"/><rect x="104" y="64" width="8" height="8" fill="#f4f6fb"/><rect x="104" y="64" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="64" width="8" height="8" fill="#111318"/><rect x="8" y="72" width="8" height="8" fill="#111318"/><rect x="16" y="72" width="8" height="8" fill="#ff7aa8"/><rect x="16" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="24" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="24" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="32" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="32" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="40" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="40" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="48" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="48" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="56" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="56" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="64" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="64" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="72" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="72" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="80" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="80" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="88" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="88" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="96" y="72" width="8" height="8" fill="#f4f6fb"/><rect x="96" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="104" y="72" width="8" height="8" fill="#ff7aa8"/><rect x="104" y="72" width="8" height="2" fill="#fff" fill-opacity=".45"/><rect x="112" y="72" width="8" height="8" fill="#111318"/><rect x="16" y="80" width="8" height="8" fill="#111318"/><rect x="24" y="80" width="8" height="8" fill="#111318"/><rect x="32" y="80" width="8" height="8" fill="#111318"/><rect x="40" y="80" width="8" height="8" fill="#111318"/><rect x="48" y="80" width="8" height="8" fill="#111318"/><rect x="56" y="80" width="8" height="8" fill="#111318"/><rect x="64" y="80" width="8" height="8" fill="#111318"/><rect x="72" y="80" width="8" height="8" fill="#111318"/><rect x="80" y="80" width="8" height="8" fill="#111318"/><rect x="88" y="80" width="8" height="8" fill="#111318"/><rect x="96" y="80" width="8" height="8" fill="#111318"/><rect x="104" y="80" width="8" height="8" fill="#111318"/><g class="bot__eyes" data-eyes="shock"><rect x="32" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="32" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="32" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="56" width="8" height="8" fill="#7ef9ff"/></g><g class="bot__eyes" data-eyes="squint"><rect x="32" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="32" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="56" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="64" y="56" width="8" height="8" fill="#7ef9ff"/></g><g class="bot__eyes" data-eyes="open"><rect x="40" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="56" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="64" y="56" width="8" height="8" fill="#7ef9ff"/></g><g class="bot__eyes" data-eyes="look"><rect x="32" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="32" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="64" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="64" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="48" width="8" height="8" fill="#7ef9ff"/></g><g class="bot__eyes" data-eyes="happy"><rect x="32" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="56" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="64" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="56" width="8" height="8" fill="#7ef9ff"/></g><g class="bot__eyes" data-eyes="dizzy"><rect x="32" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="40" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="32" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="48" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="40" width="8" height="8" fill="#7ef9ff"/><rect x="80" y="48" width="8" height="8" fill="#7ef9ff"/><rect x="72" y="56" width="8" height="8" fill="#7ef9ff"/><rect x="88" y="56" width="8" height="8" fill="#7ef9ff"/></g></g>
+    </svg>
+    </div>
+  </div>
+
+  <!-- ============ LIGHTBOX player ============ -->
+  <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Video player">
+    <button class="lightbox__close" data-lb-close type="button">Close ✕</button>
+    <div class="lightbox__frame"><video controls playsinline preload="none"></video></div>
+    <div class="lightbox__meta"><span class="tag" data-lb-cat></span><h3 data-lb-title></h3></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/videos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

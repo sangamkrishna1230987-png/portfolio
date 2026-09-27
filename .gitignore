@@ -1,0 +1,7 @@
+# system
+.DS_Store
+# font source archives (fonts/ holds the files the site uses)
+*.zip
+# local tooling
+.vercel
+node_modules
