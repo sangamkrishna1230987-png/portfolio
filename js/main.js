@@ -84,11 +84,12 @@ function buildGallery() {
   const arrow = (dir) =>
     `<button class="edge-arrow edge-arrow--${dir}" data-${dir === "left" ? "prev" : "next"} aria-label="${dir === "left" ? "Previous" : "Next"}"><svg viewBox="0 0 24 24"><path d="${dir === "left" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}"/></svg></button>`;
 
-  GALLERY_ROWS.forEach((cats) => {
+  GALLERY_ROWS.forEach((cats, gi) => {
     const items = VIDEOS.filter((v) => cats.includes(v.cat));
     if (!items.length) return;
     const slider = document.createElement("div");
     slider.className = "slider";
+    slider.dataset.group = gi;
     slider.dataset.slider = "";
     const track = document.createElement("div");
     track.className = "slider__track";
@@ -429,6 +430,250 @@ function initClients() {
   });
 }
 
+/* ---------- Microdrama process: steps light up as they cross the middle of the screen ---------- */
+function initMicroProcess() {
+  const root = $("[data-mprocess]");
+  if (!root) return;
+  const list = $("[data-msteps]", root);
+  const steps = $$(".mstep", root);
+  const line = $("[data-mline]", root);
+  const count = $("[data-mcount]", root);
+  const label = $("[data-mlabel]", root);
+  const ring = $("[data-mring]", root);
+  const C = 119.4;
+  let current = -1;
+
+  const setActive = (i) => {
+    if (i === current) return;
+    current = i;
+    steps.forEach((s, k) => { s.classList.toggle("is-active", k === i); s.classList.toggle("is-done", k < i); });
+    count.textContent = String(i + 1).padStart(2, "0");
+    ring.style.strokeDashoffset = C * (1 - (i + 1) / steps.length);
+    label.classList.add("is-swap");
+    setTimeout(() => { label.innerHTML = $(".mstep__title", steps[i]).innerHTML; label.classList.remove("is-swap"); }, 180);
+  };
+
+  if (reduceMotion) { steps.forEach((s) => s.classList.add("is-done")); setActive(0); return; }
+
+  // pick the step closest to the middle of the viewport
+  const update = () => {
+    const mid = window.innerHeight * 0.55;
+    let best = 0, bestD = Infinity;
+    steps.forEach((s, k) => {
+      const r = s.getBoundingClientRect();
+      const d = Math.abs(r.top + Math.min(r.height, 80) / 2 - mid);
+      if (d < bestD) { bestD = d; best = k; }
+    });
+    setActive(best);
+    // line fill follows scroll through the list
+    const lr = list.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (mid - lr.top) / lr.height));
+    line.style.setProperty("--p", p.toFixed(3));
+  };
+  let ticking = false;
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+}
+
+/* =========================================================
+   Section interactions — one distinct idea per section
+   ========================================================= */
+const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+/* Showreel: a round cursor that says DRAG, or PLAY over a watch button */
+function initReelCursor() {
+  const reel = $("[data-reel]");
+  const cur = $("[data-reel-cursor]");
+  if (!reel || !cur || !finePointer || reduceMotion || !hasGsap) return;
+  const label = $("span", cur);
+  const xTo = gsap.quickTo(cur, "x", { duration: 0.35, ease: "power3.out" });
+  const yTo = gsap.quickTo(cur, "y", { duration: 0.35, ease: "power3.out" });
+  const zone = $(".slider__track", reel);
+  zone.addEventListener("pointerenter", () => cur.classList.add("is-on"));
+  zone.addEventListener("pointerleave", () => cur.classList.remove("is-on", "is-play"));
+  zone.addEventListener("pointermove", (e) => {
+    const r = reel.getBoundingClientRect();
+    xTo(e.clientX - r.left);
+    yTo(e.clientY - r.top);
+    const play = !!e.target.closest("[data-play]");
+    cur.classList.toggle("is-play", play);
+    label.textContent = play ? "▶ PLAY" : zone.classList.contains("is-dragging") ? "← →" : "DRAG";
+  });
+}
+
+/* Services: frames tilt toward the cursor with a moving glare */
+function initTilt() {
+  if (!finePointer || reduceMotion) return;
+  $$(".feature__media").forEach((el) => {
+    const glare = document.createElement("span");
+    glare.className = "tilt-glare";
+    el.appendChild(glare);
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--rx", `${(0.5 - py) * 10}deg`);
+      el.style.setProperty("--ry", `${(px - 0.5) * 12}deg`);
+      el.style.setProperty("--gx", `${px * 100}%`);
+      el.style.setProperty("--gy", `${py * 100}%`);
+      el.classList.add("is-tilting");
+    });
+    el.addEventListener("pointerleave", () => {
+      el.classList.remove("is-tilting");
+      el.style.setProperty("--rx", "0deg");
+      el.style.setProperty("--ry", "0deg");
+    });
+  });
+}
+
+/* Selected work: filter chips show one group of rows at a time */
+function initFilters() {
+  const bar = $("[data-chips]");
+  if (!bar) return;
+  const rows = $$("[data-gallery] > .slider");
+  bar.addEventListener("click", (e) => {
+    const chip = e.target.closest("[data-filter]");
+    if (!chip) return;
+    $$(".chip", bar).forEach((c) => c.classList.toggle("is-on", c === chip));
+    const f = chip.dataset.filter;
+    rows.forEach((row) => {
+      const show = f === "all" || row.dataset.group === f;
+      if (show && row.hidden) {
+        row.hidden = false;
+        if (hasGsap && !reduceMotion) gsap.fromTo($$(".gcard", row), { opacity: 0, y: 40, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.04, ease: "power3.out", clearProps: "all" });
+      } else if (!show) row.hidden = true;
+    });
+    if (hasGsap) ScrollTrigger.refresh();
+  });
+}
+
+/* Brief → final frame: pinned, vertical scroll drives the cards sideways (desktop) */
+function initHorizontalProcess() {
+  if (!hasGsap || reduceMotion || window.innerWidth < 1024) return;
+  const sec = $("#process");
+  const track = sec && $("[data-track]", sec);
+  if (!track) return;
+  const dist = () => track.scrollWidth - track.clientWidth;
+  if (dist() < 40) return;
+  sec.classList.add("is-hscroll");
+  gsap.to(track, {
+    scrollLeft: () => dist(), ease: "none",
+    scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + dist(), pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1 },
+  });
+  // this pin is created after the triggers further down the page, so re-order and recompute them
+  ScrollTrigger.sort();
+  ScrollTrigger.refresh();
+}
+
+/* Testimonials: drag the screenshots around like a pinboard (desktop) */
+function initDragShots() {
+  if (!finePointer) return;
+  let z = 10;
+  $$(".shot").forEach((el) => {
+    let sx = 0, sy = 0, ox = 0, oy = 0, down = false;
+    el.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      down = true;
+      el.setPointerCapture(e.pointerId);
+      sx = e.clientX; sy = e.clientY;
+      el.style.zIndex = ++z;
+      el.classList.add("is-dragging");
+    });
+    el.addEventListener("pointermove", (e) => {
+      if (down) el.style.translate = `${ox + e.clientX - sx}px ${oy + e.clientY - sy}px`;
+    });
+    const up = (e) => {
+      if (!down) return;
+      down = false;
+      el.classList.remove("is-dragging");
+      ox += e.clientX - sx; oy += e.clientY - sy;
+    };
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
+  });
+}
+
+/* Results: a spotlight follows the cursor inside each box */
+function initSpotlight() {
+  if (!finePointer) return;
+  $$(".rbox").forEach((el) => el.addEventListener("pointermove", (e) => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }));
+}
+
+/* Tools marquee: speeds up and skews with scroll velocity */
+function initVelocityMarquee() {
+  if (reduceMotion || !hasGsap) return;
+  const rows = $$(".marquee");
+  const anims = rows.map((m) => $(".marquee__track", m).getAnimations()[0]).filter(Boolean);
+  if (!anims.length) return;
+  let v = 0;
+  const skew = rows.map((m) => gsap.quickTo(m, "skewX", { duration: 0.5, ease: "power3.out" }));
+  ScrollTrigger.create({
+    trigger: "#contact", start: "top bottom", end: "bottom top",
+    onUpdate: (st) => { v = st.getVelocity(); },
+  });
+  gsap.ticker.add(() => {
+    v *= 0.9;
+    const k = 1 + Math.min(4, Math.abs(v) / 400);
+    anims.forEach((a) => (a.playbackRate = k));
+    skew.forEach((s) => s(gsap.utils.clamp(-12, 12, -v / 250)));
+  });
+}
+
+/* "Let's create": letters scramble into place when it enters, and on hover/tap */
+function initScramble() {
+  const h = $(".cta .h-giant");
+  if (!h || reduceMotion) return;
+  const glyphs = "!<>-_/[]{}=+*^?#AI01";
+  let running = false;
+  const run = () => {
+    if (running) return;
+    running = true;
+    const els = $$(".w > span", h);
+    const finals = els.map((e) => e.textContent);
+    let frame = 0;
+    const tick = () => {
+      els.forEach((e, i) => {
+        e.textContent = [...finals[i]].map((ch, k) =>
+          frame > (k + i * 3) * 1.4 || ch === "'" ? ch : glyphs[Math.floor(Math.random() * glyphs.length)]
+        ).join("");
+      });
+      if (++frame <= 46) requestAnimationFrame(tick);
+      else { els.forEach((e, i) => (e.textContent = finals[i])); running = false; }
+    };
+    tick();
+  };
+  new IntersectionObserver(([e], o) => {
+    if (e.isIntersecting) { setTimeout(run, 500); o.disconnect(); }
+  }, { threshold: 0.6 }).observe(h);
+  h.addEventListener("pointerenter", run);
+  h.addEventListener("click", run);
+}
+
+/* Footer: the big SANGAM letters rise toward the cursor */
+function initFooterWord() {
+  const w = $(".footer__word");
+  if (!w) return;
+  w.innerHTML = [...w.textContent].map((c) => `<span>${c}</span>`).join("");
+  if (!finePointer || reduceMotion) return;
+  const letters = $$("span", w);
+  const foot = w.parentElement;
+  foot.addEventListener("pointermove", (e) => {
+    letters.forEach((l) => {
+      const r = l.getBoundingClientRect();
+      const k = Math.max(0, 1 - (Math.abs(e.clientX - (r.left + r.width / 2)) / window.innerWidth) * 4);
+      l.style.transform = `translateY(${-k * 18}%)`;
+      l.style.opacity = 0.07 + k * 0.6;
+    });
+  });
+  foot.addEventListener("pointerleave", () => letters.forEach((l) => { l.style.transform = ""; l.style.opacity = ""; }));
+}
+
 /* ---------- Pixel robot: cycles expressions, gets angry when poked ---------- */
 function initRobot() {
   const robot = $("[data-robot]");
@@ -765,10 +1010,20 @@ initLightbox();
 initAutoplay();
 initRobot();
 initClients();
+initMicroProcess();
+initFilters();
+initTilt();
+initDragShots();
+initSpotlight();
+initFooterWord();
 initSmoothScroll();
 initNav();
 initMotion();
 initMascot();
+initReelCursor();
+initHorizontalProcess();
+initVelocityMarquee();
+initScramble();
 $("[data-year]").textContent = new Date().getFullYear();
 if (!hasGsap || reduceMotion) {
   document.body.classList.remove("is-loading");
