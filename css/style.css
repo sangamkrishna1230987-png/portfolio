@@ -493,6 +493,56 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .gcard:hover .gcard__info { transform: none; }
 
 /* =========================================================
+   4b. MICRODRAMAS — vertical episode cards
+   ========================================================= */
+.dramas {
+  position: relative; z-index: 4; padding: var(--section-gap) var(--gutter) 0; overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 30%, rgba(227, 52, 47, .16), transparent 70%),
+    #000;
+}
+.dramas__head { max-width: 900px; margin: 0 auto 56px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.dramas__live { --c: #ff4d4d; }
+.dramas__live::before { display: none; }
+.dramas__dot { width: 9px; height: 9px; border-radius: 50%; background: #ff4d4d; box-shadow: 0 0 0 0 rgba(255, 77, 77, .6); animation: live 1.6s ease-out infinite; }
+@keyframes live { to { box-shadow: 0 0 0 12px rgba(255, 77, 77, 0); } }
+.dramas__lead { font-size: clamp(15px, 1.4vw, 21px); opacity: .75; max-width: 34em; text-wrap: balance; }
+.dramas__row { display: flex; justify-content: center; gap: clamp(20px, 4vw, 64px); flex-wrap: wrap; }
+.ep { width: min(360px, 82vw); display: flex; flex-direction: column; gap: 18px; }
+.ep__frame {
+  position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; padding: 0;
+  border-radius: 26px; overflow: hidden; background: #111; cursor: pointer;
+  box-shadow: 0 40px 90px -30px rgba(227, 52, 47, .45), 0 0 0 1px rgba(255, 255, 255, .1);
+  transition: transform .7s var(--ease-out), box-shadow .7s var(--ease-out);
+}
+.ep__frame video { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+.ep__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .45), transparent 22%, transparent 65%, rgba(0, 0, 0, .75)); pointer-events: none; }
+.ep__frame:hover { transform: translateY(-8px); box-shadow: 0 50px 110px -30px rgba(227, 52, 47, .65), 0 0 0 1px rgba(255, 255, 255, .2); }
+.ep__frame:hover video { transform: scale(1.05); }
+.ep__frame:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.ep__badge {
+  position: absolute; left: 16px; top: 16px; z-index: 2; padding: 6px 12px; border-radius: 8px;
+  background: #e3342f; color: #fff; font-family: var(--font-display); font-size: 16px; letter-spacing: .04em;
+}
+.ep__time { position: absolute; right: 16px; top: 18px; z-index: 2; font-family: var(--font-display); font-size: 14px; color: #fff; opacity: .85; }
+.ep__play {
+  position: absolute; left: 50%; bottom: 26px; z-index: 2; width: 64px; height: 64px; margin-left: -32px; border-radius: 50%;
+  background: rgba(255, 255, 255, .16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M8 5.5v13l11-6.5z'/%3E%3C/svg%3E") 56% 50% / 26px no-repeat;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6); backdrop-filter: blur(10px);
+  transition: transform .5s var(--ease-out), background-color .3s;
+}
+.ep__frame:hover .ep__play { transform: scale(1.12); background-color: #e3342f; }
+.ep__info { display: flex; flex-direction: column; gap: 8px; padding: 0 4px; }
+.ep__genre { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255, 77, 77, .6); color: #ff8a8a; }
+.ep__title { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: -.02em; font-size: clamp(24px, 2.4vw, 36px); line-height: 1; color: var(--green); }
+.ep__log { font-size: 15px; opacity: .72; }
+@media (max-width: 640px) {
+  .dramas__row { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(-1 * var(--gutter)); padding: 10px var(--gutter) 30px; scrollbar-width: none; }
+  .dramas__row::-webkit-scrollbar { display: none; }
+  .ep { flex: none; width: 76vw; scroll-snap-align: center; }
+}
+
+/* =========================================================
    5. PROCESS — bright learn cards
    ========================================================= */
 .learn { position: relative; z-index: 4; background: #000; padding-top: var(--section-gap); }

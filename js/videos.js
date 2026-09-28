@@ -1,6 +1,8 @@
 // Portfolio videos — "Latest ads" folder first, then the category folders.
 // Files: assets/videos (full), assets/videos/preview (6s muted loop), assets/posters.
 const VIDEOS = [
+  {id: "microdrama-1", title: "The King's Captive", cat: "Microdramas", w: 720, h: 1280},
+  {id: "microdrama-2", title: "New Girl", cat: "Microdramas", w: 720, h: 1280},
   {id: "bawree", title: "Bawree — Dubai", cat: "Latest Ads", w: 720, h: 1280},
   {id: "meena-film", title: "Meena Jewellers", cat: "Latest Ads", w: 1280, h: 720},
   {id: "rakshabandhan", title: "Raksha Bandhan", cat: "Latest Ads", w: 1280, h: 720},
