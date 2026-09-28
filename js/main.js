@@ -674,6 +674,59 @@ function initFooterWord() {
   foot.addEventListener("pointerleave", () => letters.forEach((l) => { l.style.transform = ""; l.style.opacity = ""; }));
 }
 
+/* Camera cursor: follows the mouse, blinks, and changes mood with what you're doing */
+function initCamCursor() {
+  const cam = $("[data-camcur]");
+  if (!cam || !finePointer) return;
+  document.documentElement.classList.add("has-camcur");
+  let x = -100, y = -100, lx = 0, ly = 0, lastT = performance.now(), speed = 0, fast = 0;
+  let pressed = 0, idleSince = performance.now(), mood = "open", target = null, raf = 0;
+  const set = (m) => { if (m !== mood) { mood = m; cam.dataset.mood = m; } };
+
+  const render = () => {
+    raf = 0;
+    cam.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  };
+  window.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    const now = performance.now();
+    const dt = Math.max(1, now - lastT);
+    const dx = e.clientX - x, dy = e.clientY - y;
+    const v = Math.hypot(dx, dy) / dt;
+    speed = speed * 0.7 + v * 0.3;
+    fast = speed > 2.2 ? fast + dt : Math.max(0, fast - dt * 2);
+    lastT = now; idleSince = now;
+    x = e.clientX; y = e.clientY; target = e.target;
+    lx = Math.max(-1.1, Math.min(1.1, dx * 0.12)); ly = Math.max(-0.9, Math.min(0.9, dy * 0.12));
+    cam.style.setProperty("--lx", `${lx}px`); cam.style.setProperty("--ly", `${ly}px`);
+    cam.style.setProperty("--lean", `${Math.max(-14, Math.min(14, dx * 0.6))}deg`);
+    cam.classList.add("is-in");
+    if (!raf) raf = requestAnimationFrame(render);
+  }, { passive: true });
+  document.addEventListener("pointerleave", () => cam.classList.remove("is-in"));
+  document.documentElement.addEventListener("mouseleave", () => cam.classList.remove("is-in"));
+  window.addEventListener("pointerdown", () => { pressed = performance.now(); cam.style.setProperty("--sq", ".82"); });
+  window.addEventListener("pointerup", () => cam.style.setProperty("--sq", "1"));
+
+  // mood loop
+  setInterval(() => {
+    const now = performance.now();
+    speed *= 0.85;
+    cam.style.setProperty("--lean", `${parseFloat(cam.style.getPropertyValue("--lean") || 0) * 0.6}deg`);
+    const onVideo = !!(target && target.closest && target.closest("[data-play], .gcard, video, .ep__frame"));
+    const onLink = !!(target && target.closest && target.closest("a, button, [role='button'], .chip, label"));
+    cam.classList.toggle("is-rec", onLink || onVideo);
+    cam.classList.toggle("is-video", onVideo);
+    if (now - pressed < 450) set("wink");
+    else if (fast > 450) set("dizzy");
+    else if (speed > 2.2) set("surprised");
+    else if (onVideo) set("love");
+    else if (onLink) set("happy");
+    else if (now - idleSince > 6000) set("sleepy");
+    else set("open");
+  }, 90);
+}
+
 /* ---------- Pixel robot: cycles expressions, gets angry when poked ---------- */
 function initRobot() {
   const robot = $("[data-robot]");
@@ -1016,6 +1069,7 @@ initTilt();
 initDragShots();
 initSpotlight();
 initFooterWord();
+initCamCursor();
 initSmoothScroll();
 initNav();
 initMotion();

@@ -1011,6 +1011,52 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* =========================================================
+   Animated camera cursor (mouse devices, JS on)
+   ========================================================= */
+.camcur { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  html.has-camcur, html.has-camcur * { cursor: none !important; }
+  html.has-camcur .camcur { display: block; }
+}
+.camcur {
+  position: fixed; left: 0; top: 0; z-index: 10000; width: 42px; height: 42px; pointer-events: none;
+  /* hotspot = lens tip */
+  margin: -24.5px 0 0 -37.3px; opacity: 0; transition: opacity .2s;
+  will-change: transform;
+}
+.camcur.is-in { opacity: 1; }
+.camcur svg { width: 100%; height: 100%; overflow: visible; display: block; transform-origin: 85% 55%; transform: rotate(var(--lean, 0deg)) scale(var(--sq, 1)); transition: transform .12s ease-out; }
+.cc__body { fill: #03e65b; transition: fill .25s; }
+.cc__rec { fill: #fff; transition: fill .25s; }
+.camcur.is-rec .cc__body { fill: #ff3b3b; }
+.camcur.is-video .cc__rec { fill: #ff3b3b; animation: ccRec 1s steps(1) infinite; }
+@keyframes ccRec { 50% { fill: #fff; } }
+.cc__eyes { display: none; }
+.camcur[data-mood="open"] .cc__eyes--open,
+.camcur[data-mood="happy"] .cc__eyes--happy,
+.camcur[data-mood="love"] .cc__eyes--love,
+.camcur[data-mood="surprised"] .cc__eyes--surprised,
+.camcur[data-mood="wink"] .cc__eyes--wink,
+.camcur[data-mood="dizzy"] .cc__eyes--dizzy,
+.camcur[data-mood="sleepy"] .cc__eyes--sleepy { display: inline; }
+.cc__look { transform: translate(var(--lx, 0px), var(--ly, 0px)); transition: transform .15s ease-out; }
+.cc__blink { transform-box: fill-box; transform-origin: center; animation: ccBlink 3.6s infinite; }
+@keyframes ccBlink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.08); } }
+.cc__eyes--love { transform-box: fill-box; transform-origin: center; animation: ccBeat .6s ease-in-out infinite alternate; }
+@keyframes ccBeat { to { transform: scale(1.18); } }
+.cc__x { transform-box: fill-box; transform-origin: center; animation: ccSpin .8s linear infinite; }
+@keyframes ccSpin { to { transform: rotate(360deg); } }
+.cc__reel { transform-box: fill-box; transform-origin: center; }
+.camcur[data-mood="dizzy"] .cc__reel { animation: ccSpin .5s linear infinite; }
+.cc__z {
+  position: absolute; left: 2px; top: -14px; font-family: var(--font-display); font-size: 14px; color: #fff;
+  -webkit-text-stroke: .5px #000; opacity: 0;
+}
+.camcur[data-mood="sleepy"] .cc__z { animation: ccZ 1.8s ease-out infinite; }
+@keyframes ccZ { 0% { opacity: 0; transform: translate(0, 4px) scale(.7); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-8px, -14px) scale(1.2); } }
+@media (prefers-reduced-motion: reduce) { .cc__blink, .cc__eyes--love, .cc__x, .cc__z { animation: none !important; } }
+
+/* =========================================================
    Reveal animations (fade + rise + blur, word stagger)
    ========================================================= */
 [data-reveal] {
