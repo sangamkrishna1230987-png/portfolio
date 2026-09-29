@@ -1057,6 +1057,78 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (prefers-reduced-motion: reduce) { .cc__blink, .cc__eyes--love, .cc__x, .cc__z { animation: none !important; } }
 
 /* =========================================================
+   OPENING — film leader, colourful signature, TV switch-off
+   ========================================================= */
+.intro { display: none; }
+html.intro-on { overflow: hidden; }
+html.intro-on .intro {
+  display: flex; position: fixed; inset: 0; z-index: 9000; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  background: #000; overflow: hidden; transform-origin: 50% 50%;
+}
+/* film grain + scanlines */
+.intro::before, .intro::after { content: ""; position: absolute; inset: -50%; pointer-events: none; z-index: 3; }
+.intro::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  opacity: .09; animation: grain .5s steps(4) infinite;
+}
+.intro::after { inset: 0; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .03) 0 1px, transparent 1px 3px), radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .75)); }
+@keyframes grain { 0% { transform: translate(0, 0); } 25% { transform: translate(-5%, 3%); } 50% { transform: translate(4%, -4%); } 75% { transform: translate(-3%, -2%); } 100% { transform: translate(2%, 5%); } }
+
+/* drifting coloured light behind the ink */
+.intro__bokeh { position: absolute; inset: 0; z-index: 0; filter: blur(60px); opacity: 0; transition: opacity 1s; }
+.intro.is-signing .intro__bokeh { opacity: .55; }
+.intro__bokeh i { position: absolute; width: 34vmax; height: 34vmax; border-radius: 50%; animation: bokeh 7s ease-in-out infinite alternate; }
+.intro__bokeh i:nth-child(1) { background: #03e65b; left: 5%; top: 10%; }
+.intro__bokeh i:nth-child(2) { background: #33d0ff; right: 0; top: 30%; animation-delay: -2s; }
+.intro__bokeh i:nth-child(3) { background: #d25fff; left: 30%; bottom: -10%; animation-delay: -4s; }
+.intro__bokeh i:nth-child(4) { background: #ff3386; right: 20%; top: -15%; animation-delay: -1s; opacity: .7; }
+@keyframes bokeh { to { transform: translate(8vw, -6vh) scale(1.2); } }
+
+/* film leader countdown */
+.intro__leader { position: absolute; z-index: 2; width: min(46vmin, 320px); aspect-ratio: 1; display: grid; place-items: center; }
+.intro__leader svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro__leader circle, .intro__leader path { fill: none; stroke: rgba(255, 255, 255, .55); stroke-width: 1.5; }
+.intro__leader circle:first-child { stroke: #03e65b; stroke-width: 3; }
+.intro__sweep {
+  position: absolute; inset: 4%; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg 250deg, rgba(3, 230, 91, .5) 358deg, #03e65b 360deg);
+  animation: sweep .43s linear infinite;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
+.intro__leader span { position: relative; font-family: var(--font-display); font-size: min(26vmin, 180px); line-height: 1; color: #fff; text-shadow: 0 0 30px rgba(3, 230, 91, .6); }
+
+/* the signature: white-on-black video tinted by a flowing gradient, black dropped with screen blend */
+.intro__sig { position: relative; z-index: 2; width: min(88vw, 980px); aspect-ratio: 1304 / 452; isolation: isolate; mix-blend-mode: screen; opacity: 0; background: #000; }
+.intro__sig video, .intro__sig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.intro__sig img { visibility: hidden; clip-path: inset(0 100% 0 0); }
+.intro__sig.use-still video { visibility: hidden; }
+.intro__sig.use-still img { visibility: visible; animation: write 2.6s cubic-bezier(.45, .05, .35, 1) forwards; }
+@keyframes write { to { clip-path: inset(0 0 0 0); } }
+.intro__ink {
+  position: absolute; inset: 0; mix-blend-mode: multiply;
+  background: linear-gradient(100deg, #03e65b, #33d0ff 22%, #d25fff 44%, #ff3386 64%, #ffc533 82%, #03e65b);
+  background-size: 300% 100%; animation: ink 3s linear infinite;
+}
+@keyframes ink { to { background-position: -300% 0; } }
+
+.intro__tag {
+  position: relative; z-index: 2; min-height: 1.2em; margin-top: -2vh;
+  font-family: var(--font-display); font-size: clamp(14px, 1.8vw, 22px); letter-spacing: .5em; color: #fff; text-indent: .5em;
+}
+.intro__tag::after { content: "▌"; margin-left: 2px; color: #03e65b; animation: caret .8s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+
+/* CRT switch-off */
+.intro__line { position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; z-index: 4; background: #fff; box-shadow: 0 0 20px 4px rgba(255, 255, 255, .8), 0 0 60px 10px rgba(51, 208, 255, .6); transform: scaleX(0); opacity: 0; }
+
+.intro__skip {
+  position: absolute; right: 22px; bottom: 22px; z-index: 5; height: 40px; padding: 0 18px; border-radius: 999px;
+  font-family: var(--font-display); font-size: 13px; letter-spacing: .1em; color: #fff;
+  background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3); transition: background .3s;
+}
+.intro__skip:hover { background: rgba(255, 255, 255, .2); }
+
+/* =========================================================
    Reveal animations (fade + rise + blur, word stagger)
    ========================================================= */
 [data-reveal] {

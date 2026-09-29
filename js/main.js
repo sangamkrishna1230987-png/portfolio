@@ -896,7 +896,7 @@ function initMascot() {
     .to(char, { xPercent: 120, rotation: 0, duration: 0.5, ease: "back.in(1.6)" });
 
   let current = null, visits = 0;
-  const busy = () => document.hidden || document.body.classList.contains("lightbox-open") || document.body.classList.contains("menu-open");
+  const busy = () => document.hidden || document.documentElement.classList.contains("intro-on") || document.body.classList.contains("lightbox-open") || document.body.classList.contains("menu-open");
   const visit = () => {
     if (busy()) return schedule(rand(4, 8));
     reset();
@@ -924,12 +924,89 @@ function initMascot() {
   });
 }
 
+/* ---------- Opening: film leader 3·2·1 → signature writes itself in colour → TV switch-off ---------- */
+let introDone = Promise.resolve();
+function initIntro() {
+  const root = $("[data-intro]");
+  const html = document.documentElement;
+  if (!root || !html.classList.contains("intro-on")) { root?.remove(); return; }
+  let finish;
+  introDone = new Promise((r) => (finish = r));
+  lenis?.stop();
+
+  const leader = $("[data-leader]", root);
+  const num = $("[data-leader-num]", root);
+  const sig = $("[data-sig]", root);
+  const video = $("video", sig);
+  const tag = $("[data-intro-tag]", root);
+  const line = $(".intro__line", root);
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  let closing = false;
+
+  const typeTag = async (text) => {
+    for (let i = 1; i <= text.length && !closing; i++) { tag.textContent = text.slice(0, i); await wait(60); }
+  };
+
+  const close = () => {
+    if (closing) return;
+    closing = true;
+    try { sessionStorage.setItem("introSeen", "1"); } catch (e) {}
+    const end = () => {
+      root.remove();
+      html.classList.remove("intro-on");
+      lenis?.start();
+      if (hasGsap) ScrollTrigger.refresh();
+      finish();
+    };
+    if (!hasGsap) { root.style.transition = "opacity .4s"; root.style.opacity = 0; return setTimeout(end, 420); }
+    gsap.timeline({ onComplete: end })
+      .to(root, { scaleY: 0.006, duration: 0.38, ease: "power3.in" })
+      .to(root, { backgroundColor: "#fff", filter: "brightness(2.5)", duration: 0.12 }, "-=0.12")
+      .to(root, { scaleX: 0.002, duration: 0.26, ease: "power3.in" })
+      .to(root, { opacity: 0, duration: 0.18 });
+  };
+  $("[data-intro-skip]", root).addEventListener("click", (e) => { e.stopPropagation(); close(); });
+  root.addEventListener("click", close);
+  window.addEventListener("keydown", (e) => { if (["Escape", "Enter", " "].includes(e.key)) close(); }, { once: true });
+
+  (async () => {
+    // 1) film leader countdown
+    for (const n of [3, 2, 1]) {
+      if (closing) return;
+      num.textContent = n;
+      num.animate([{ transform: "scale(1.25)", opacity: 0.4 }, { transform: "scale(1)", opacity: 1 }], { duration: 220, easing: "ease-out" });
+      await wait(430);
+    }
+    if (closing) return;
+    leader.animate([{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(1.5)" }], { duration: 300, fill: "forwards", easing: "ease-in" });
+    setTimeout(() => { leader.style.opacity = 0; leader.style.visibility = "hidden"; }, 320); // safety net if the animation is throttled
+
+    // 2) signature writes itself (video; falls back to a wipe of the final frame)
+    root.classList.add("is-signing");
+    sig.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250, fill: "forwards" });
+    setTimeout(() => { sig.style.opacity = 1; }, 270);
+    video.playbackRate = 1.3;
+    let writeTime = 2600;
+    try {
+      await video.play();
+      await wait(350);
+      if (video.paused || video.currentTime < 0.05) throw new Error("stalled");
+      writeTime = ((video.duration || 4.5) - video.currentTime) / video.playbackRate * 1000;
+    } catch (e) {
+      sig.classList.add("use-still");
+    }
+    setTimeout(() => typeTag("AI FILMMAKER"), writeTime * 0.45);
+    await wait(writeTime + 650);
+    close();
+  })();
+}
+
 /* ---------- Hero is ready once fonts and the first wall images are decoded (capped at 1.5s) ---------- */
 function whenHeroReady() {
   const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
   const imgs = $$("[data-tunnel] img").slice(0, 16).map((im) => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()));
   const cap = new Promise((r) => setTimeout(r, 1500));
-  return Promise.race([Promise.all([fonts, ...imgs]), cap]);
+  return Promise.all([introDone, Promise.race([Promise.all([fonts, ...imgs]), cap])]);
 }
 
 /* ---------- GSAP: hero intro, tunnel fly-through, reel rise, feature media ---------- */
@@ -1071,6 +1148,7 @@ initSpotlight();
 initFooterWord();
 initCamCursor();
 initSmoothScroll();
+initIntro();
 initNav();
 initMotion();
 initMascot();
@@ -1080,7 +1158,7 @@ initVelocityMarquee();
 initScramble();
 $("[data-year]").textContent = new Date().getFullYear();
 if (!hasGsap || reduceMotion) {
-  document.body.classList.remove("is-loading");
+  introDone.then(() => document.body.classList.remove("is-loading"));
   document.body.classList.add("no-pin");
 }
 

@@ -16,6 +16,34 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="is-loading">
+  <!-- ============ OPENING — film leader → signature → TV switch-off ============ -->
+  <div class="intro" data-intro aria-hidden="true">
+    <div class="intro__bokeh"><i></i><i></i><i></i><i></i></div>
+    <div class="intro__leader" data-leader>
+      <div class="intro__sweep"></div>
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="72"/><path d="M100 0V200M0 100H200"/></svg>
+      <span data-leader-num>3</span>
+    </div>
+    <div class="intro__sig" data-sig>
+      <video muted playsinline preload="auto" src="assets/intro/signature.mp4"></video>
+      <img src="assets/intro/signature-final.png" alt="" data-sig-still />
+      <div class="intro__ink"></div>
+    </div>
+    <p class="intro__tag" data-intro-tag></p>
+    <div class="intro__line"></div>
+    <button class="intro__skip" type="button" data-intro-skip>Skip ›</button>
+  </div>
+  <script>
+    // decide before first paint whether the opening plays (once per visit; ?intro forces it)
+    (function () {
+      var show = true;
+      try {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) show = false;
+        if (sessionStorage.getItem("introSeen") && !/[?&]intro/.test(location.search)) show = false;
+      } catch (e) {}
+      document.documentElement.classList.add(show ? "intro-on" : "intro-off");
+    })();
+  </script>
 
   <!-- Gooey filter used by every .btn (liquid fill on hover) -->
   <svg class="svg-defs" width="0" height="0" aria-hidden="true">
