@@ -10,7 +10,7 @@ const full = (id) => `assets/videos/${id}.mp4`;
 
 // Gallery rows, grouped by the Drive categories
 const GALLERY_ROWS = [
-  ["Latest Ads"],
+  ["Short Films", "Latest Ads"],
   ["Insta Reels", "UGC"],
   ["Jewellery", "Lifestyle"],
   ["TV Commercial", "Story Ads", "Local Business", "Real Estate"],
